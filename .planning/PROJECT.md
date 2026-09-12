@@ -57,7 +57,7 @@ Un parent doit pouvoir enregistrer une tétée/sieste/couche en ≤ 2 taps à 3h
 
 ## Constraints
 
-- **Tech stack (stricte)** : Expo SDK 57 managed workflow + New Architecture, TypeScript strict (noUncheckedIndexedAccess), Expo Router (typed routes), NativeWind v4 (unique paradigme styling), Zustand + MMKV (persist avec `partialize` obligatoire), expo-sqlite (SQL brut isolé dans `repository/` + `core/database/` — SQL INTERDIT ailleurs), Zod à toutes les frontières, react-hook-form + resolvers Zod, expo-crypto (randomUUID), dayjs, i18next, expo-notifications, expo-haptics, expo-print/file-system/sharing, expo-secure-store (master key), crypto-js (AES-256 + PBKDF2 100k — react-native-quick-crypto INTERDIT), react-native-iap, react-native-google-mobile-ads, Vitest (80 % services/repos), ESLint eslint-config-expo + Prettier (zéro warning).
+- **Tech stack (stricte)** : Expo SDK 57 managed workflow + New Architecture, TypeScript strict (noUncheckedIndexedAccess), Expo Router (typed routes), NativeWind v4.2.x (unique paradigme styling, Tailwind ~3.4 — v4 Tailwind incompatible), Zustand + MMKV 4.x Nitro (persist avec `partialize` obligatoire, instance chiffrée AES-256 explicite), expo-sqlite (SQL brut isolé dans `repository/` + `core/database/` — SQL INTERDIT ailleurs), Zod à toutes les frontières, react-hook-form + resolvers Zod, expo-crypto (randomUUID), dayjs, i18next, expo-notifications, expo-haptics, expo-print/file-system (nouvelle API File/Directory)/sharing, expo-secure-store (master key), chiffrement AEAD 256-bit pur JS via l'écosystème @noble (remplace crypto-js discontinué — react-native-quick-crypto INTERDIT), expo-iap 5.x (StoreKit/Play Billing, plugin config officiel — remplace react-native-iap dont la v16 abandonne le support Expo Dev Client), react-native-google-mobile-ads 16.x (delayAppMeasurementInit), Vitest (80 % services/repos), ESLint eslint-config-expo + Prettier (zéro warning). Stack native = incompatible Expo Go : dev builds EAS obligatoires.
 - **Architecture** : 100 % offline au boot — ZÉRO appel réseau avant `onboarding_completed` ; AdMob et IAP initialisés après onboarding et uniquement si free tier. Mono-device strict au MVP.
 - **Sécurité** : PII (prénom bébé, notes) chiffrés AES-256 AVANT écriture SQLite ; master key en Keychain/Keystore (expo-secure-store, WHEN_UNLOCKED_THIS_DEVICE_ONLY) ; instance MMKV chiffrée pour `billing:`/`secrets:` ; aucun secret ni PII dans les logs.
 - **Données** : tables singulières snake_case, IDs TEXT uuid (expo-crypto), dates INTEGER epoch ms UTC, booléens INTEGER 0/1, `created_at`/`updated_at` obligatoires (+ triggers), index obligatoires sur jointures et colonnes chaudes, migrations idempotentes `schema_version`. Entitlements/quotas 100 % MMKV — jamais SQLite.
@@ -69,12 +69,15 @@ Un parent doit pouvoir enregistrer une tétée/sieste/couche en ≤ 2 taps à 3h
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Expo SDK 57 (repo) au lieu du « SDK 53+ » du doc 04 | Le repo est scaffoldé en SDK 57 (57 ≥ 53) ; AGENTS.md impose la doc v57. Rechercher la compatibilité exacte des libs (NativeWind, MMKV, IAP, ads) sur SDK 57 | — Pending |
+| Expo SDK 57 (repo) au lieu du « SDK 53+ » du doc 04 | Le repo est scaffoldé en SDK 57 (57 ≥ 53) ; AGENTS.md impose la doc v57. Compatibilités exactes validées par la recherche (.planning/research/STACK.md) | ✓ Good |
+| expo-iap remplace react-native-iap (décision utilisateur 2026-09-12) | La v16 de react-native-iap (Nitro) déclare le Expo Dev Client non supporté et renvoie vers expo-iap ; plugin config Expo officiel, entitlements toujours 100 % MMKV | — Pending |
+| Chiffrement @noble remplace crypto-js (décision utilisateur 2026-09-12) | crypto-js est officiellement discontinué et son PBKDF2 synchrone menace le budget <2 s sur Hermes ; @noble/hashes (+ @noble/ciphers pour l'AEAD) est pur JS maintenu, respecte l'interdit zéro-natif ; primitive exacte tranchée au spike crypto de la phase data-layer | — Pending |
+| Enum pompage (nurse/bottle/pump) dans m001, UI V1.1 (décision utilisateur 2026-09-12) | Table stake bon marché (tous les concurrents l'ont) ; créer l'enum dans la migration initiale évite une migration douloureuse ; le périmètre MVP reste 5 features | — Pending |
 | Dark-only au MVP (Nocturne Glow) | Cœur du positionnement « nuit » ; tokens light diurnes documentés mais non prioritaires | — Pending |
 | SweetSpot construit au MVP, gaté premium au lancement | Différenciateur n°1 (anti-Huckleberry) ; teaser free après 3 jours de données | — Pending |
 | Backup gratuit, jamais paywallé | Règle éthique : données jamais prises en otage ; argument de confiance | — Pending |
 | Entitlements/quotas en MMKV chiffrée, jamais SQLite | Zéro backend, offline-first ; instance MMKV chiffrée dérivée de la master key secure-store | — Pending |
-| react-native-quick-crypto INTERDIT | Binding C++ JSI = natif complexe ; crypto-js pur JS suffit aux volumes MVP | — Pending |
+| react-native-quick-crypto INTERDIT | Binding C++ JSI = natif complexe ; crypto pur JS uniquement | — Pending |
 | Template Expo par défaut remplacé (pas cartographié) | Code boilerplate sans valeur métier ; l'arborescence specs est imposée par docs/04 | — Pending |
 
 ## Evolution
