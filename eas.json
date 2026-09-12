@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ADMOB_ANDROID_APP_ID": "ca-app-pub-XXXXX~YYYYY",
+        "EXPO_PUBLIC_ADMOB_IOS_APP_ID": "ca-app-pub-XXXXX~ZZZZZ"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_ADMOB_ANDROID_APP_ID": "ca-app-pub-XXXXX~YYYYY",
+        "EXPO_PUBLIC_ADMOB_IOS_APP_ID": "ca-app-pub-XXXXX~ZZZZZ"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

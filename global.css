@@ -1,0 +1,4 @@
+/* global.css — importé une seule fois dans src/app/_layout.tsx (NativeWind) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
