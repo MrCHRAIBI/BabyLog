@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Import Sauvegarde Chiffrée (V2) — BabyLog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e6e0f2",
+            "on-tertiary-container": "#372140",
+            "tertiary-fixed": "#f7d8ff",
+            "surface-tint": "#c6bfff",
+            "on-error-container": "#ffdad6",
+            "error-container": "#93000a",
+            "surface-container-lowest": "#0f0c18",
+            "on-secondary": "#29276a",
+            "on-secondary-fixed-variant": "#403f82",
+            "surface-container-low": "#1d1a26",
+            "on-surface-variant": "#c8c4d7",
+            "inverse-primary": "#5844da",
+            "on-secondary-fixed": "#130f55",
+            "background": "#14121e",
+            "on-primary-container": "#23008d",
+            "primary-fixed-dim": "#c6bfff",
+            "secondary-container": "#424184",
+            "surface-variant": "#363340",
+            "on-tertiary-fixed-variant": "#563e5f",
+            "primary": "#c6bfff",
+            "on-tertiary": "#3e2847",
+            "on-tertiary-fixed": "#281331",
+            "on-primary-fixed": "#160066",
+            "on-primary": "#2800a0",
+            "secondary-fixed": "#e2dfff",
+            "tertiary-fixed-dim": "#dbbce4",
+            "outline": "#928ea0",
+            "inverse-on-surface": "#322f3c",
+            "surface-bright": "#3b3745",
+            "on-secondary-container": "#b2b1fd",
+            "secondary-fixed-dim": "#c2c1ff",
+            "surface-container": "#211e2b",
+            "tertiary": "#dbbce4",
+            "on-error": "#690005",
+            "on-primary-fixed-variant": "#3f24c2",
+            "surface-container-highest": "#363340",
+            "on-background": "#e6e0f2",
+            "on-surface": "#e6e0f2",
+            "primary-container": "#8c7fff",
+            "surface": "#14121e",
+            "outline-variant": "#474555",
+            "secondary": "#c2c1ff",
+            "surface-container-high": "#2b2835",
+            "tertiary-container": "#a387ac",
+            "error": "#ffb4ab",
+            "surface-dim": "#14121e",
+            "primary-fixed": "#e4dfff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "1rem",
+            "xl": "1rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "space-md": "1.25rem",
+            "space-lg": "1.75rem",
+            "space-sm": "0.75rem",
+            "gutter": "1rem",
+            "margin-tablet": "2rem",
+            "margin": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-desktop": "2rem",
+            "space-xs": "0.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "timer-display": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "timer-display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "headline-lg": ["36px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "18px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Container / Canvas (Task Focused Screen: Shell Suppressed per Navigation Rules) -->
+<div class="relative w-full max-w-md mx-auto min-h-screen flex flex-col justify-between px-margin pb-space-lg pt-4 bg-background">
+<!-- Top Bar / Header Section -->
+<header class="w-full flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<!-- Back Button: Strict 44x44, rounded-2xl (1rem) -->
+<a aria-label="Retour" class="w-11 h-11 rounded-2xl bg-surface-container-low border border-[#2e2a3b] flex items-center justify-center text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-150 ease-out" href="javascript:history.back()">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</a>
+<h1 class="font-headline-sm text-headline-sm text-[#f9ece5] font-semibold tracking-tight">
+          Importer un backup
+        </h1>
+</div>
+<!-- Security Status Badge: Pill / rounded-2xl (1rem) -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-[#7665fa]/10 border border-[#7665fa]/30 text-secondary">
+<span class="material-symbols-outlined text-[16px] fill-1 text-primary">lock</span>
+<span class="font-label-md text-label-md tracking-normal font-medium">Chiffré</span>
+</div>
+</header>
+<!-- Main Content Stack -->
+<main class="flex-1 flex flex-col gap-6">
+<!-- 1. Explanatory Context Card -->
+<section class="rounded-2xl p-space-md bg-surface-container-low border border-[#2e2a3b] relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-[#7665fa]/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-2xl bg-[#7665fa]/20 border border-[#7665fa]/30 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[26px]">unarchive</span>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-sm text-[17px] leading-snug text-[#f9ece5] font-semibold mb-1">
+              Restaurer vos données
+            </h2>
+<p class="font-body-sm text-body-sm text-[#a09cb0]">
+              Sélectionnez une archive <span class="text-secondary font-medium">.babylog</span> pour récupérer l'historique complet (tétées, sommeil, couches, courbes) sur cet appareil.
+            </p>
+</div>
+</div>
+</section>
+<!-- 2. File Picker Section -->
+<section class="rounded-2xl p-space-md bg-surface-container-low border border-[#2e2a3b] flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline font-semibold">Fichier sélectionné</span>
+<span class="font-label-md text-label-md text-primary bg-[#7665fa]/15 px-2.5 py-0.5 rounded-2xl font-medium">Archive V2</span>
+</div>
+<!-- File Details Card -->
+<div class="rounded-2xl p-3.5 bg-surface-container border border-[#2e2a3b] flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-2xl bg-[#7665fa]/20 border border-[#7665fa]/30 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[24px]">insert_drive_file</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-lg text-label-lg text-[#f9ece5] font-semibold truncate">
+              babylog_20260910_leo.babylog
+            </div>
+<div class="font-label-md text-label-md text-[#a09cb0] mt-0.5 truncate">
+              248 Ko · Créé le 10 Sept 2026
+            </div>
+</div>
+</div>
+<!-- Action / Re-pick File Button -->
+<button class="w-full h-12 rounded-2xl border border-[#9c9be5]/30 bg-[#9c9be5]/10 text-secondary hover:bg-[#9c9be5]/20 active:scale-[0.98] transition-all duration-150 ease-out font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+          Changer de fichier
+        </button>
+</section>
+<!-- 3. Password / PIN Input Card -->
+<section class="rounded-2xl p-space-md bg-surface-container-low border border-[#2e2a3b] flex flex-col gap-3">
+<label class="font-label-lg text-label-lg text-[#f9ece5] font-semibold" for="backup-pin">
+          Code PIN ou mot de passe de protection
+        </label>
+<!-- Input Field Container -->
+<div class="relative flex items-center">
+<div class="absolute left-4 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full h-13 pl-11 pr-12 py-3 bg-surface-container border border-[#2e2a3b] rounded-2xl text-[#f9ece5] placeholder-outline/50 font-body-md text-body-md focus:outline-none focus:border-[#7665fa] focus:ring-2 focus:ring-[#7665fa]/20 transition-all" id="backup-pin" placeholder="••••••••" type="password" value="198422"/>
+<button aria-label="Afficher le mot de passe" class="absolute right-3 w-8 h-8 rounded-2xl flex items-center justify-center text-outline hover:text-[#f9ece5] active:scale-95 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<p class="font-label-md text-label-md text-[#a09cb0] flex items-center gap-1.5 pl-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">info</span>
+          Le code PIN défini lors de la création de cette archive.
+        </p>
+</section>
+<!-- 4. Destructive Overwrite Warning Card -->
+<section class="rounded-2xl p-space-md bg-red-500/10 border border-red-500/30 flex flex-col gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center shrink-0 text-error">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-sm text-[16px] text-error font-semibold mb-1">
+              Avertissement de remplacement
+            </h3>
+<p class="font-body-sm text-body-sm text-[#f9ece5]/80 leading-snug">
+              L'importation remplacera l'intégralité des données actuelles par le contenu de l'archive. Cette action est irréversible.
+            </p>
+</div>
+</div>
+<!-- Custom Checkbox Container -->
+<label class="rounded-2xl p-3 bg-[#14121e]/60 border border-red-500/20 flex items-start gap-3 cursor-pointer select-none group hover:border-red-500/40 transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded-2xl bg-surface-container border-red-500/40 text-[#7665fa] focus:ring-0 focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-[#f9ece5] leading-snug">
+            Je confirme vouloir restaurer et écraser les données locales
+          </span>
+</label>
+</section>
+</main>
+<!-- Bottom Action Footer -->
+<footer class="mt-6 flex flex-col gap-3 pt-2">
+<!-- Primary CTA Button -->
+<button class="w-full h-14 rounded-2xl bg-[#7665fa] text-[#f9ece5] font-label-lg text-[16px] font-semibold flex items-center justify-center gap-2 shadow-[0_12px_32px_-8px_rgba(118,101,250,0.35)] hover:bg-[#6855f8] active:scale-[0.98] transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[22px]">lock_open</span>
+<span>Déchiffrer &amp; Restaurer</span>
+</button>
+<!-- Reassurance Offline Indicator -->
+<div class="flex items-center justify-center gap-2 text-center text-[#a09cb0]">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span class="font-label-md text-label-md">Vérification d'intégrité SHA-256 · Zéro transmission cloud</span>
+</div>
+</footer>
+</div>
+<script>
+    // Password toggle interactive micro-interaction
+    const toggleBtn = document.querySelector('button[aria-label="Afficher le mot de passe"]');
+    const pinInput = document.getElementById('backup-pin');
+    if (toggleBtn && pinInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = pinInput.type === 'password';
+        pinInput.type = isPassword ? 'text' : 'password';
+        const icon = toggleBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        }
+      });
+    }
+  </script>
+</body></html>

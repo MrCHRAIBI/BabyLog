@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>BabyLog - Export PDF Pédiatre</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Font: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "bg-base": "#14121e",
+            "surface-dark": "#1d1a26",
+            "surface-card": "#242030",
+            "surface-elevated": "#2d293d",
+            "brand-primary": "#7665FA",
+            "brand-primary-light": "#9688fb",
+            "text-cream": "#F9ECE5",
+            "text-muted": "#A09DB1",
+            "border-custom": "#2e2a3b",
+            "accent-soft": "#dbbce4"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            sm: "1rem",
+            md: "1rem",
+            lg: "1rem",
+            xl: "1rem",
+            "2xl": "1rem",
+            "3xl": "1rem",
+            full: "1rem"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Strictly enforce 1rem (16px) everywhere requested */
+    .r-16 {
+      border-radius: 1rem !important;
+    }
+    .glow-primary {
+      box-shadow: 0 8px 24px -4px rgba(118, 101, 250, 0.35);
+    }
+  </style>
+</head>
+<body class="bg-bg-base text-text-cream antialiased min-h-screen flex justify-center selection:bg-brand-primary selection:text-white">
+<!-- Main Container Modal View -->
+<main class="w-full max-w-md min-h-screen bg-bg-base flex flex-col justify-between relative border-x border-border-custom/30">
+<!-- Modal Drag Handle & Header -->
+<header class="sticky top-0 z-40 bg-bg-base/95 backdrop-blur-md pt-3 pb-3 px-5 border-b border-border-custom flex flex-col gap-2">
+<!-- Drag Handle -->
+<div class="w-12 h-1 bg-text-muted/30 r-16 mx-auto mb-1"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-bold text-text-cream tracking-tight">Export PDF Pédiatre</h1>
+<span class="r-16 bg-[#7665FA]/15 text-[#9688fb] text-[11px] font-semibold px-2 py-0.5 border border-[#7665FA]/30">
+              V2
+            </span>
+</div>
+<p class="text-xs text-text-muted flex items-center gap-1 mt-0.5 font-medium">
+<span class="material-symbols-outlined text-[14px] text-[#7665FA]">verified</span>
+            Synthèse 7 jours certifiée hors-ligne
+          </p>
+</div>
+<!-- Close Button strictly 1rem (16px) -->
+<button aria-label="Fermer" class="w-10 h-10 r-16 bg-surface-dark border border-border-custom flex items-center justify-center text-text-cream hover:bg-surface-card active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Body Content -->
+<div class="px-4 py-4 space-y-4 flex-1 overflow-y-auto">
+<!-- Card 1: Aperçu du Rapport (7 derniers jours) -->
+<section class="r-16 bg-surface-dark border border-border-custom p-4 space-y-3.5 shadow-sm">
+<!-- Top bar of card -->
+<div class="flex items-center justify-between pb-3 border-b border-border-custom">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 r-16 bg-[#7665FA]/15 border border-[#7665FA]/30 flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+</div>
+<div>
+<h2 class="text-sm font-bold text-text-cream">Aperçu du Rapport</h2>
+<span class="text-xs text-text-muted">Du 18 au 24 Octobre 2026</span>
+</div>
+</div>
+<span class="r-16 bg-[#7665FA]/20 text-[#9688fb] text-xs font-semibold px-2.5 py-1 border border-[#7665FA]/30">
+            Léo • 12j
+          </span>
+</div>
+<!-- 3 Quick Metrics -->
+<div class="grid grid-cols-3 gap-2">
+<div class="r-16 bg-surface-card border border-border-custom p-2.5 flex flex-col items-center text-center">
+<div class="w-7 h-7 r-16 bg-brand-primary/10 flex items-center justify-center mb-1 text-brand-primary">
+<span class="material-symbols-outlined text-[16px]">water_drop</span>
+</div>
+<span class="text-lg font-bold text-text-cream leading-tight">42</span>
+<span class="text-[11px] text-text-muted mt-0.5">Tétées</span>
+<span class="text-[10px] text-text-muted/70">~6 / jour</span>
+</div>
+<div class="r-16 bg-surface-card border border-border-custom p-2.5 flex flex-col items-center text-center">
+<div class="w-7 h-7 r-16 bg-[#c2c1ff]/10 flex items-center justify-center mb-1 text-[#c2c1ff]">
+<span class="material-symbols-outlined text-[16px]">baby_changing_station</span>
+</div>
+<span class="text-lg font-bold text-text-cream leading-tight">28</span>
+<span class="text-[11px] text-text-muted mt-0.5">Couches</span>
+<span class="text-[10px] text-text-muted/70">~4 / jour</span>
+</div>
+<div class="r-16 bg-surface-card border border-border-custom p-2.5 flex flex-col items-center text-center">
+<div class="w-7 h-7 r-16 bg-accent-soft/10 flex items-center justify-center mb-1 text-accent-soft">
+<span class="material-symbols-outlined text-[16px]">bedtime</span>
+</div>
+<span class="text-lg font-bold text-text-cream leading-tight">64h</span>
+<span class="text-[11px] text-text-muted mt-0.5">Sommeil</span>
+<span class="text-[10px] text-text-muted/70">~9.1h / jour</span>
+</div>
+</div>
+<!-- Sections incluses list -->
+<div class="space-y-2 pt-1">
+<span class="text-xs font-semibold text-text-muted uppercase tracking-wider block">Sections incluses</span>
+<div class="space-y-1.5">
+<div class="r-16 bg-surface-card border border-border-custom px-3 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 r-16 bg-[#7665FA]/15 text-brand-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">show_chart</span>
+</div>
+<span class="text-xs font-medium text-text-cream">Courbes de croissance &amp; repas</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-brand-primary">check_circle</span>
+</div>
+<div class="r-16 bg-surface-card border border-border-custom px-3 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 r-16 bg-accent-soft/15 text-accent-soft flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">timelapse</span>
+</div>
+<span class="text-xs font-medium text-text-cream">Rythme de sommeil jour/nuit</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-brand-primary">check_circle</span>
+</div>
+<div class="r-16 bg-surface-card border border-border-custom px-3 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 r-16 bg-[#c2c1ff]/15 text-[#c2c1ff] flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+</div>
+<span class="text-xs font-medium text-text-cream">Notes &amp; observations pédiatriques</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-brand-primary">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Disclaimer badge -->
+<div class="r-16 bg-red-950/20 border border-red-500/20 p-2.5 flex items-start gap-2.5">
+<div class="w-6 h-6 r-16 bg-red-500/10 flex items-center justify-center shrink-0 text-red-400 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">info</span>
+</div>
+<p class="text-[11px] leading-relaxed text-text-muted">
+<strong class="text-red-300 font-medium">Document de synthèse pédiatrique :</strong> ce récapitulatif ne remplace en aucun cas un diagnostic médical d'urgence.
+          </p>
+</div>
+</section>
+<!-- Card 2: Quota d'exports gratuits -->
+<section class="r-16 bg-surface-dark border border-border-custom p-4 space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 r-16 bg-brand-primary/15 text-brand-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-text-cream">Quota d'exports gratuits</h3>
+<p class="text-[11px] text-text-muted">Règle V2 : 1 export glissant / 7 jours</p>
+</div>
+</div>
+<span class="r-16 bg-surface-card border border-border-custom text-text-muted text-[11px] font-semibold px-2.5 py-1">
+            1 / 1 utilisé
+          </span>
+</div>
+<!-- Gauge container strictly 1rem -->
+<div class="w-full h-3 bg-surface-card r-16 p-0.5 border border-border-custom overflow-hidden">
+<div class="h-full bg-gradient-to-r from-brand-primary to-accent-soft r-16 w-full"></div>
+</div>
+<div class="flex items-center justify-between text-xs text-text-muted pt-0.5">
+<span class="flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-[14px] text-brand-primary">schedule</span>
+            1/1 export utilisé cette semaine
+          </span>
+<span class="r-16 bg-[#7665FA]/10 text-brand-primary-light text-[10px] font-medium px-2 py-0.5 border border-brand-primary/20">
+            Réinitialisation dans 3 jours
+          </span>
+</div>
+</section>
+<!-- Card 3: Action alternative / Rewarded Options -->
+<section class="space-y-2.5">
+<!-- Rewarded Video Option -->
+<button class="w-full r-16 bg-surface-dark hover:bg-surface-card border border-dashed border-brand-primary/40 p-3.5 flex items-center justify-between active:scale-[0.99] transition-all text-left group" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 r-16 bg-brand-primary/15 text-brand-primary flex items-center justify-center group-hover:bg-brand-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-text-cream">+1 export gratuit</span>
+<span class="r-16 bg-amber-400/20 text-amber-300 text-[10px] font-semibold px-2 py-0.5 border border-amber-400/30">Instantané</span>
+</div>
+<p class="text-xs text-text-muted mt-0.5">Via une courte vidéo pédiatrique sponsorisée</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-brand-primary transition-colors text-[20px]">chevron_right</span>
+</button>
+<!-- Lifetime Premium Card -->
+<div class="r-16 bg-gradient-to-br from-surface-dark via-surface-card to-[#7665FA]/10 border border-brand-primary/25 p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 r-16 bg-[#7665FA]/20 border border-[#7665FA]/30 flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-[22px]">all_inclusive</span>
+</div>
+<div>
+<span class="text-sm font-bold text-text-cream block leading-tight">Débloquer illimité</span>
+<span class="text-xs text-text-muted">BabyLog Lifetime • Paiement unique</span>
+</div>
+</div>
+<button class="r-16 bg-[#7665FA] hover:bg-brand-primary-light active:scale-95 text-white text-xs font-bold px-3.5 py-2 transition-all" type="button">
+            Découvrir
+          </button>
+</div>
+</section>
+</div>
+<!-- Footer / Bottom Fixed Bar -->
+<footer class="sticky bottom-0 z-40 bg-bg-base/95 backdrop-blur-md px-4 pt-3 pb-5 border-t border-border-custom space-y-2">
+<!-- Big CTA Button 56px strictly 1rem radius -->
+<button class="w-full h-14 r-16 bg-[#7665FA] hover:bg-brand-primary-light active:scale-[0.98] text-white font-bold text-base flex items-center justify-center gap-2 glow-primary transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+<span>Générer et partager le PDF</span>
+</button>
+<!-- Caption -->
+<p class="text-[11px] text-center text-text-muted flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[13px] text-brand-primary">lock</span>
+        Génération 100% locale sur votre processeur · Format A4 pédiatrique standard
+      </p>
+</footer>
+</main>
+</body></html>

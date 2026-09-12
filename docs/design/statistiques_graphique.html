@@ -1,0 +1,384 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Statistiques &amp; Graphique (V2) — BabyLog</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#5844da",
+            "primary-container": "#8c7fff",
+            "on-primary-fixed": "#160066",
+            "tertiary-fixed": "#fbd9ea",
+            "background": "#13121f",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e5e0f3",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#d0c4be",
+            "error-container": "#93000a",
+            "on-primary-container": "#23008d",
+            "surface-container-lowest": "#0e0d1a",
+            "on-tertiary-container": "#382330",
+            "outline": "#8b919f",
+            "on-secondary": "#362f2b",
+            "secondary-fixed": "#ede0d9",
+            "surface-variant": "#353342",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#c6bfff",
+            "surface-bright": "#3a3746",
+            "tertiary": "#debece",
+            "on-tertiary-fixed-variant": "#57404d",
+            "on-tertiary-fixed": "#291521",
+            "on-secondary-fixed": "#201a16",
+            "secondary-container": "#4d4540",
+            "surface-tint": "#c6bfff",
+            "outline-variant": "#414753",
+            "inverse-surface": "#e5e0f3",
+            "surface-dim": "#13121f",
+            "inverse-on-surface": "#312f3d",
+            "secondary": "#d0c4be",
+            "on-secondary-fixed-variant": "#4d4540",
+            "on-secondary-container": "#beb3ad",
+            "surface-container-highest": "#353342",
+            "on-primary-fixed-variant": "#3f24c2",
+            "tertiary-fixed-dim": "#debece",
+            "surface": "#13121f",
+            "on-primary": "#2800a0",
+            "surface-container-high": "#2a2836",
+            "primary": "#c6bfff",
+            "on-surface-variant": "#c1c6d5",
+            "surface-container-low": "#1c1a27",
+            "primary-fixed": "#e4dfff",
+            "tertiary-container": "#a68998",
+            "on-tertiary": "#3f2a36",
+            "surface-container": "#201e2c",
+            "on-surface": "#e5e0f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #252331;
+      color: #F9ECE5;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+
+<!-- TopAppBar Fixed Header -->
+<body><header class="fixed top-0 left-0 w-full z-40 bg-[#1B1924]/95 backdrop-blur-md px-4 h-14 flex items-center justify-between border-b border-[rgba(197,167,206,0.12)] shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-[#7665FA]/15 flex items-center justify-center text-[#7665FA]">
+<span class="material-symbols-outlined fill-icon text-[20px]" data-icon="child_care">child_care</span>
+</div>
+<span class="text-lg font-extrabold tracking-tight text-[#F9ECE5]">BabyLog</span>
+</div>
+<!-- Status & PDF Export -->
+<div class="flex items-center gap-3">
+<!-- Badge Hors-ligne -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#282532] border border-[rgba(197,167,206,0.18)] text-[11px] font-medium text-[#C5A7CE]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#7665FA]"></span>
+<span class="">Hors-ligne</span>
+</div>
+<!-- Export PDF Icon Button -->
+<button aria-label="Export PDF" class="w-8 h-8 rounded-full flex items-center justify-center text-[#C5A7CE] hover:text-[#F9ECE5] hover:bg-white/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+</div>
+</header>
+<!-- Main Content Container with spacious vertical flow and no collisions -->
+<main class="pt-20 px-4 max-w-lg mx-auto flex flex-col gap-6 mt-2">
+<!-- Title Section -->
+<div class="flex flex-col gap-1 pt-1">
+<div class="flex items-center justify-between">
+<h1 class="text-2xl font-bold tracking-tight text-[#F9ECE5]">Statistiques</h1>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-[#7665FA]/20 text-[#7665FA] font-medium border border-[#7665FA]/30">V2 Live</span>
+</div>
+<p class="text-sm text-[#C5A7CE] font-normal">Rythme diurne &amp; observations hebdo</p>
+</div>
+<!-- Segmented Multi-Period Selector (Aéré & 1rem / rounded-2xl radius) -->
+<div class="p-1.5 rounded-2xl bg-[#282532] border border-[rgba(197,167,206,0.15)] grid grid-cols-3 gap-1.5 shadow-sm">
+<button class="py-2.5 rounded-2xl text-xs font-semibold text-[#C5A7CE] hover:text-[#F9ECE5] transition-all text-center">
+        24 heures
+      </button>
+<button class="py-2.5 rounded-2xl text-xs font-bold text-white bg-[#7665FA] shadow-md transition-all text-center">
+        7 jours
+      </button>
+<button class="py-2.5 rounded-2xl text-xs font-semibold text-[#C5A7CE]/60 flex items-center justify-center gap-1 cursor-not-allowed">
+<span class="">30 jours</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+</button>
+</div>
+<!-- 3 Metric Cards Grid (1rem / rounded-2xl border radius, #282532 neutral bg) -->
+<div class="grid grid-cols-3 gap-3">
+<!-- Card 1: Tétées -->
+<div class="rounded-2xl bg-[#282532] border border-[rgba(197,167,206,0.15)] p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#7665FA]"></span>
+<span class="material-symbols-outlined text-[18px] text-[#7665FA]" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<div class="text-2xl font-bold text-[#F9ECE5] tracking-tight">42</div>
+<div class="text-[11px] font-medium text-[#C5A7CE] leading-tight mt-0.5">Tétées hebdo</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[rgba(197,167,206,0.1)] flex items-center justify-between text-[10px]">
+<span class="text-[#C5A7CE]/80">Moy.</span>
+<span class="font-bold text-[#7665FA]">6 / j</span>
+</div>
+</div>
+<!-- Card 2: Couches -->
+<div class="rounded-2xl bg-[#282532] border border-[rgba(197,167,206,0.15)] p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#C5A7CE]"></span>
+<span class="material-symbols-outlined text-[18px] text-[#C5A7CE]" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<div class="text-2xl font-bold text-[#F9ECE5] tracking-tight">28</div>
+<div class="text-[11px] font-medium text-[#C5A7CE] leading-tight mt-0.5">Couches</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[rgba(197,167,206,0.1)] flex items-center justify-between text-[10px]">
+<span class="text-[#C5A7CE]/80">Moy.</span>
+<span class="font-bold text-[#C5A7CE]">4 / j</span>
+</div>
+</div>
+<!-- Card 3: Sommeil total -->
+<div class="rounded-2xl bg-[#282532] border border-[rgba(197,167,206,0.15)] p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#9C9BE5]"></span>
+<span class="material-symbols-outlined fill-icon text-[18px] text-[#9C9BE5]" data-icon="bedtime">bedtime</span>
+</div>
+<div>
+<div class="text-2xl font-bold text-[#F9ECE5] tracking-tight">64h</div>
+<div class="text-[11px] font-medium text-[#C5A7CE] leading-tight mt-0.5">Sommeil total</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[rgba(197,167,206,0.1)] flex items-center justify-between text-[10px]">
+<span class="text-[#C5A7CE]/80">Moy.</span>
+<span class="font-bold text-[#9C9BE5]">9.1h / j</span>
+</div>
+</div>
+</div>
+<!-- Daily Activity Distribution Card (#282532 bg, 1rem rounded-2xl) -->
+<div class="rounded-2xl bg-[#282532] border border-[rgba(197,167,206,0.15)] p-4 flex flex-col gap-4 shadow-sm">
+<!-- Card Header with Legend -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h2 class="text-base font-bold text-[#F9ECE5]">Répartition journalière</h2>
+<p class="text-xs text-[#C5A7CE]">Cumul des activités sur 7 jours</p>
+</div>
+<!-- Legend Items -->
+<div class="flex items-center gap-3 text-[11px] font-medium">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#7665FA]"></span>
+<span class="text-[#C5A7CE]">Tétée</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#9C9BE5]"></span>
+<span class="text-[#C5A7CE]">Dodo</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#C5A7CE]"></span>
+<span class="text-[#C5A7CE]">Couche</span>
+</div>
+</div>
+</div>
+<!-- Stacked Bar Chart (7 Days: L M M J V S D with #7665FA, #9C9BE5, #C5A7CE) -->
+<div class="pt-4 pb-1">
+<div class="h-44 flex items-end justify-between gap-2.5 px-2">
+<!-- Lundi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 72%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 18%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 52%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 30%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">L</span>
+</div>
+<!-- Mardi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 80%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 14%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 58%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 28%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">M</span>
+</div>
+<!-- Mercredi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 65%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 22%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 48%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 30%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">M</span>
+</div>
+<!-- Jeudi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 94%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 16%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 56%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 28%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">J</span>
+</div>
+<!-- Vendredi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 42%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 25%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 35%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 40%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">V</span>
+</div>
+<!-- Samedi -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden bg-white/5" style="height: 50%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 20%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 40%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 40%;"></div>
+</div>
+<span class="text-xs font-semibold text-[#C5A7CE]">S</span>
+</div>
+<!-- Dimanche (Aujourd'hui / Actif avec mise en avant) -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end relative">
+<div class="absolute -top-1 w-1.5 h-1.5 rounded-full bg-[#7665FA]"></div>
+<div class="w-full flex flex-col rounded-t-lg overflow-hidden ring-1 ring-[#7665FA]/50 bg-white/10" style="height: 60%;">
+<div class="w-full bg-[#C5A7CE]" style="height: 22%;"></div>
+<div class="w-full bg-[#9C9BE5]" style="height: 40%;"></div>
+<div class="w-full bg-[#7665FA]" style="height: 38%;"></div>
+</div>
+<span class="text-xs font-bold text-[#F9ECE5]">D</span>
+</div>
+</div>
+</div>
+<!-- Context Callout Sub-banner -->
+<div class="flex items-center gap-2.5 p-3 rounded-2xl bg-white/[0.03] border border-[rgba(197,167,206,0.1)] text-xs text-[#C5A7CE]">
+<span class="material-symbols-outlined text-[18px] text-[#7665FA]" data-icon="auto_graph">auto_graph</span>
+<span class="">Rythme nocturne consolidé : <strong class="text-[#F9ECE5]">72% de sommeil nocturne</strong></span>
+</div>
+</div>
+<!-- SweetSpot™ AI Locale Teaser Card (1rem / rounded-2xl, #282532 background) -->
+<div class="rounded-2xl bg-[#282532] border border-[#7665FA]/40 p-5 relative overflow-hidden shadow-lg flex flex-col gap-4">
+<!-- Glow ambient background decoration -->
+<div class="absolute -top-20 -right-20 w-48 h-48 bg-[#7665FA]/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Row with Pill Badge & Lock -->
+<div class="flex items-center justify-between relative z-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#7665FA]/20 border border-[#7665FA]/40 text-xs font-semibold text-[#F9ECE5]">
+<span class="material-symbols-outlined text-[14px] text-[#7665FA]" data-icon="auto_awesome">auto_awesome</span>
+<span class="">SweetSpot™ AI Locale</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-[#C5A7CE]">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- Title & Blurred Preview -->
+<div class="relative z-10 flex flex-col gap-2.5">
+<h3 class="text-lg font-bold text-[#F9ECE5] leading-snug">Prochaine fenêtre d'endormissement</h3>
+<!-- Estimation prédite floutée -->
+<div class="relative p-3.5 rounded-2xl bg-[#1B1924] border border-[rgba(197,167,206,0.18)] flex items-center justify-between overflow-hidden">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#7665FA]" data-icon="hourglass_top">hourglass_top</span>
+<div class="flex flex-col">
+<span class="text-[11px] text-[#C5A7CE]">Estimation prédictive en temps réel</span>
+<span class="text-sm font-bold text-[#F9ECE5] filter blur-sm select-none">Sieste optimale dans ~1h25</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-[#C5A7CE]" data-icon="visibility_off">visibility_off</span>
+</div>
+</div>
+<!-- 3 Checkmark Benefits -->
+<ul class="flex flex-col gap-2 relative z-10 text-xs text-[#C5A7CE]">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#7665FA] mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="">Détection automatique des signes de fatigue</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#7665FA] mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="">Calibré sur le rythme naturel de votre bébé</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#7665FA] mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="">100% calculé hors-ligne sur votre processeur</span>
+</li>
+</ul>
+<!-- CTA Button (1rem / rounded-2xl, #7665FA primary) -->
+<button class="w-full py-3.5 px-4 rounded-2xl bg-[#7665FA] hover:bg-[#6857ea] active:scale-[0.98] transition-all text-[#F9ECE5] font-semibold text-sm flex items-center justify-center gap-2 shadow-md relative z-10">
+<span class="">Débloquer SweetSpot™ en Premium</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Encart Sponsorisé / Conseils pédiatriques (1rem / rounded-2xl radius) -->
+<div class="rounded-2xl bg-[#282532]/70 border border-[rgba(197,167,206,0.1)] p-3.5 flex items-center justify-between gap-3 text-xs mb-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-white/5 flex items-center justify-center text-[#9C9BE5]">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_hospital">local_hospital</span>
+</div>
+<div>
+<div class="text-[10px] font-bold text-[#C5A7CE]/70 uppercase tracking-wider">Sponsorisé</div>
+<div class="font-medium text-[#F9ECE5]">Conseils pédiatriques certifiés</div>
+</div>
+</div>
+<button class="px-3.5 py-1.5 rounded-2xl bg-white/5 text-[#C5A7CE] hover:text-[#F9ECE5] font-semibold text-[11px] transition-colors">
+        Lire
+      </button>
+</div>
+</main>
+<!-- BottomNavBar Shell (#282532 background, 1rem rounded styling, active #7665FA) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex items-center justify-around px-2 h-16 bg-[#282532] border-t border-[rgba(197,167,206,0.15)] shadow-xl">
+<!-- Item 1: Journal (Inactive) -->
+<button aria-label="Journal" class="flex flex-col items-center justify-center text-[#C5A7CE] hover:text-[#7665FA] text-[11px] py-1 transition-transform active:scale-95 duration-150 ease-out">
+<span class="material-symbols-outlined text-[22px]" data-icon="history">history</span>
+<span class="mt-0.5">Journal</span>
+</button>
+<!-- Item 2: Tracker (Inactive) -->
+<button aria-label="Tracker" class="flex flex-col items-center justify-center text-[#C5A7CE] hover:text-[#7665FA] text-[11px] py-1 transition-transform active:scale-95 duration-150 ease-out">
+<span class="material-symbols-outlined text-[22px]" data-icon="play_circle">play_circle</span>
+<span class="mt-0.5">Tracker</span>
+</button>
+<!-- Item 3: Stats (ACTIVE: mapped to this page) -->
+<button aria-label="Stats" class="flex flex-col items-center justify-center text-[#7665FA] text-[11px] py-1 font-semibold transition-transform active:scale-95 duration-150 ease-out relative">
+<span class="material-symbols-outlined fill-icon text-[22px]" data-icon="bar_chart">bar_chart</span>
+<span class="mt-0.5">Stats</span>
+<span class="w-1 h-1 rounded-full bg-[#7665FA] mt-0.5"></span>
+</button>
+<!-- Item 4: Paramètres (Inactive) -->
+<button aria-label="Paramètres" class="flex flex-col items-center justify-center text-[#C5A7CE] hover:text-[#7665FA] text-[11px] py-1 transition-transform active:scale-95 duration-150 ease-out">
+<span class="material-symbols-outlined text-[22px]" data-icon="settings">settings</span>
+<span class="mt-0.5">Paramètres</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BabyLog - Suivi 1-Tap Nocturne V2</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0f0c18",
+            "surface-dim": "#14121e",
+            "surface": "#14121e",
+            "background": "#14121e",
+            "surface-container-low": "#1d1a26",
+            "surface-container": "#211e2b",
+            "surface-container-high": "#2b2835",
+            "surface-container-highest": "#363340",
+            "primary": "#c6bfff",
+            "primary-container": "#8c7fff",
+            "accent": "#7665FA",
+            "on-surface": "#e6e0f2",
+            "on-surface-variant": "#c8c4d7",
+            "outline": "#928ea0",
+            "outline-variant": "#474555",
+            "tertiary": "#dbbce4"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "none": "0px",
+            "sm": "1rem",
+            "md": "1rem",
+            "lg": "1rem",
+            "xl": "1rem",
+            "2xl": "1rem",
+            "3xl": "1rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #14121e;
+      color: #F9ECE5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .glow-card {
+      box-shadow: 0 0 25px -5px rgba(118, 101, 250, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .timer-ring-glow {
+      box-shadow: 0 0 35px -2px rgba(118, 101, 250, 0.3), inset 0 0 20px -2px rgba(118, 101, 250, 0.15);
+    }
+    .bottom-blur {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#14121e] text-[#F9ECE5] flex flex-col justify-between selection:bg-[#7665FA]/30 pb-20">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-40 w-full bg-[#14121e]/90 backdrop-blur-md border-b border-[#363340]/60 px-4 py-3">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-[1rem] bg-[#211e2b] border border-[#363340] flex items-center justify-center text-[#c6bfff] shadow-sm">
+<span class="material-symbols-outlined text-[20px]">child_care</span>
+</div>
+<span class="font-bold text-[18px] text-[#F9ECE5] tracking-tight">BabyLog</span>
+</div>
+<!-- Secure local badge & Status icon -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-[#211e2b] rounded-[1rem] border border-[#363340]/80">
+<span class="w-1.5 h-1.5 rounded-full bg-[#7665FA] shadow-[0_0_8px_#7665FA]"></span>
+<span class="text-[11px] font-medium text-[#c8c4d7] tracking-wide">100% Local · Chiffré</span>
+</div>
+<button aria-label="État du chiffrement" class="w-8 h-8 rounded-[1rem] bg-[#211e2b] border border-[#363340]/80 flex items-center justify-center text-[#A09DB1] hover:text-[#F9ECE5] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]">cloud_off</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTAINER -->
+<main class="w-full max-w-md mx-auto px-4 pt-3 pb-4 flex flex-col gap-4">
+<!-- PAGE HEADER -->
+<section class="flex items-center justify-between">
+<div>
+<h1 class="text-[22px] font-bold text-[#F9ECE5] tracking-tight leading-tight">Suivi 1-Tap</h1>
+<p class="text-[12px] text-[#A09DB1] mt-0.5">Appuyez pour lancer ou consigner une veille</p>
+</div>
+<div class="px-3 py-1 rounded-[1rem] bg-[#1d1a26] text-[#c6bfff] border border-[#7665FA]/30 flex items-center gap-1.5 text-xs font-semibold shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>Mode Nuit</span>
+</div>
+</section>
+<!-- ACTIVE FEEDING TRACKER -->
+<section class="glow-card relative bg-gradient-to-b from-[#211e2b] to-[#1d1a26] border border-[#7665FA]/40 rounded-[1rem] p-4 flex flex-col gap-3.5">
+<!-- Status pill and time reference -->
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-2 px-3 py-1 bg-[#7665FA]/15 rounded-[1rem] border border-[#7665FA]/40">
+<span class="w-2 h-2 rounded-full bg-[#7665FA] shadow-[0_0_6px_#7665FA]"></span>
+<span class="text-[11px] font-bold text-[#e6e0f2] tracking-wider uppercase">EN COURS · SEIN GAUCHE</span>
+</div>
+<span class="text-[11px] text-[#A09DB1]">Dernière il y a 2h45</span>
+</div>
+<!-- Central Circular Timer Unit -->
+<div class="flex flex-col items-center justify-center py-1">
+<div class="relative w-36 h-36 rounded-full flex flex-col items-center justify-center bg-[#14121e] border border-[#7665FA]/60 timer-ring-glow">
+<span class="material-symbols-outlined text-[#7665FA] text-[20px] mb-0.5">water_drop</span>
+<span class="text-[34px] font-bold text-[#F9ECE5] tracking-tight leading-none font-mono" id="feed-timer">14:52</span>
+<button class="mt-2.5 px-3.5 py-1 rounded-[1rem] bg-[#7665FA] text-[#14121e] font-bold text-xs flex items-center gap-1 hover:brightness-110 active:scale-95 transition-all shadow-[0_2px_8px_rgba(118,101,250,0.35)]" id="timer-toggle-btn">
+<span class="material-symbols-outlined text-[15px]">pause</span>
+<span>Arrêter</span>
+</button>
+</div>
+</div>
+<!-- Action: Switch breast + start timestamp -->
+<div class="flex flex-col gap-1.5 pt-1 border-t border-[#363340]/50">
+<button class="w-full py-2.5 px-4 bg-[#14121e] hover:bg-[#2b2835] active:scale-[0.98] transition-all rounded-[1rem] text-[#F9ECE5] font-semibold text-xs flex items-center justify-center gap-2 border border-[#363340]/80">
+<span class="material-symbols-outlined text-[17px] text-[#c6bfff]">swap_horiz</span>
+<span>Changer de côté</span>
+</button>
+<span class="text-center text-[11px] text-[#A09DB1]">Démarré à 03:12</span>
+</div>
+</section>
+<!-- SLEEP CARD (DODO) -->
+<section class="bg-[#1d1a26] border border-[#363340]/70 rounded-[1rem] p-3.5 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-[1rem] bg-[#14121e] border border-[#363340] flex items-center justify-center text-[#c6bfff]">
+<span class="material-symbols-outlined text-[16px]">bedtime</span>
+</div>
+<span class="text-[14px] font-bold text-[#F9ECE5]">Sommeil</span>
+</div>
+<span class="text-[11px] text-[#A09DB1]">Dernier réveil il y a 1h15</span>
+</div>
+<button class="w-full bg-[#14121e] hover:bg-[#2b2835] active:scale-[0.98] transition-all rounded-[1rem] p-3 flex items-center gap-3.5 border border-[#363340]/80 text-left group">
+<div class="w-10 h-10 rounded-[1rem] bg-[#211e2b] flex items-center justify-center text-[#c6bfff] group-hover:scale-105 transition-transform border border-[#363340]/60 shrink-0">
+<span class="material-symbols-outlined text-[20px]">nightlight</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[14px] font-semibold text-[#F9ECE5] group-hover:text-[#c6bfff] transition-colors">Démarrer le dodo</span>
+<span class="text-[11px] text-[#A09DB1]">1 tap pour lancer la veilleuse &amp; le chronomètre</span>
+</div>
+</button>
+</section>
+<!-- DIAPER (COUCHE) CARD WITH 4 QUICK OPTIONS -->
+<section class="bg-[#1d1a26] border border-[#363340]/70 rounded-[1rem] p-3.5 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-[1rem] bg-[#14121e] border border-[#363340] flex items-center justify-center text-[#c6bfff]">
+<span class="material-symbols-outlined text-[16px]">baby_changing_station</span>
+</div>
+<span class="text-[14px] font-bold text-[#F9ECE5]">Couche</span>
+</div>
+<span class="text-[11px] text-[#A09DB1]">Dernière il y a 3h10</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<!-- Mouillée -->
+<button class="diaper-btn flex flex-col items-center justify-center py-2.5 px-1 bg-[#14121e] hover:bg-[#2b2835] active:scale-95 transition-all rounded-[1rem] border border-[#363340]/80 gap-1.5 focus:border-[#7665FA]">
+<div class="w-8 h-8 rounded-[1rem] bg-[#211e2b] flex items-center justify-center text-[#c6bfff] border border-[#363340]/60">
+<span class="material-symbols-outlined text-[17px]">water_drop</span>
+</div>
+<span class="text-[11px] font-medium text-[#F9ECE5]">Mouillée</span>
+</button>
+<!-- Sale -->
+<button class="diaper-btn flex flex-col items-center justify-center py-2.5 px-1 bg-[#14121e] hover:bg-[#2b2835] active:scale-95 transition-all rounded-[1rem] border border-[#363340]/80 gap-1.5 focus:border-[#7665FA]">
+<div class="w-8 h-8 rounded-[1rem] bg-[#211e2b] flex items-center justify-center text-[#dbbce4] border border-[#363340]/60">
+<span class="material-symbols-outlined text-[17px]">spa</span>
+</div>
+<span class="text-[11px] font-medium text-[#F9ECE5]">Sale</span>
+</button>
+<!-- Mixte -->
+<button class="diaper-btn flex flex-col items-center justify-center py-2.5 px-1 bg-[#14121e] hover:bg-[#2b2835] active:scale-95 transition-all rounded-[1rem] border border-[#363340]/80 gap-1.5 focus:border-[#7665FA]">
+<div class="w-8 h-8 rounded-[1rem] bg-[#211e2b] flex items-center justify-center text-[#7665FA] border border-[#363340]/60">
+<span class="material-symbols-outlined text-[17px]">sync</span>
+</div>
+<span class="text-[11px] font-medium text-[#F9ECE5]">Mixte</span>
+</button>
+<!-- Propre -->
+<button class="diaper-btn flex flex-col items-center justify-center py-2.5 px-1 bg-[#14121e] hover:bg-[#2b2835] active:scale-95 transition-all rounded-[1rem] border border-[#363340]/80 gap-1.5 focus:border-[#7665FA]">
+<div class="w-8 h-8 rounded-[1rem] bg-[#211e2b] flex items-center justify-center text-emerald-400 border border-[#363340]/60">
+<span class="material-symbols-outlined text-[17px]">check</span>
+</div>
+<span class="text-[11px] font-medium text-[#F9ECE5]">Propre</span>
+</button>
+</div>
+</section>
+<!-- RECENT ACTIVITIES -->
+<section class="flex flex-col gap-2 pt-0.5">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-[14px] font-bold text-[#F9ECE5]">Activités récentes</h2>
+<a class="text-[12px] font-medium text-[#c6bfff] hover:underline flex items-center gap-0.5" href="#activities">
+          Voir tout <span class="text-sm">→</span>
+</a>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="bg-[#1d1a26] border border-[#363340]/70 rounded-[1rem] px-3.5 py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-[1rem] bg-[#14121e] border border-[#363340] flex items-center justify-center text-[#c6bfff] shrink-0">
+<span class="material-symbols-outlined text-[17px]">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-[#F9ECE5]">Tétée · 14 min</span>
+<span class="text-[11px] text-[#A09DB1]">Sein droit · 03:15</span>
+</div>
+</div>
+<div class="text-right">
+<span class="px-2.5 py-0.5 rounded-[1rem] bg-[#14121e] border border-[#363340]/80 text-[11px] font-medium text-[#A09DB1]">
+              il y a 2h45
+            </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-[#1d1a26] border border-[#363340]/70 rounded-[1rem] px-3.5 py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-[1rem] bg-[#14121e] border border-[#363340] flex items-center justify-center text-[#dbbce4] shrink-0">
+<span class="material-symbols-outlined text-[17px]">bedtime</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-[#F9ECE5]">Sommeil · 2h30</span>
+<span class="text-[11px] text-[#A09DB1]">Nuit paisible · 00:45</span>
+</div>
+</div>
+<div class="text-right">
+<span class="px-2.5 py-0.5 rounded-[1rem] bg-[#14121e] border border-[#363340]/80 text-[11px] font-medium text-[#A09DB1]">
+              il y a 5h15
+            </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Strict 1rem rounded items / Nocturne Glow) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 h-16 bg-[#14121e]/95 bottom-blur border-t border-[#363340]/70 flex items-center justify-around px-2">
+<!-- Journal -->
+<a class="flex flex-col items-center justify-center text-[#A09DB1] hover:text-[#c6bfff] py-1 px-3 rounded-[1rem] active:scale-95 transition-all" href="#journal">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-[11px] font-medium mt-0.5">Journal</span>
+</a>
+<!-- Tracker (Active Item) -->
+<a class="flex flex-col items-center justify-center text-[#c6bfff] bg-[#211e2b] border border-[#7665FA]/40 py-1 px-4 rounded-[1rem] shadow-[0_0_12px_rgba(118,101,250,0.25)] active:scale-95 transition-all" href="#tracker">
+<span class="material-symbols-outlined text-[20px] text-[#7665FA]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-[11px] font-bold text-[#F9ECE5] mt-0.5">Tracker</span>
+</a>
+<!-- Stats -->
+<a class="flex flex-col items-center justify-center text-[#A09DB1] hover:text-[#c6bfff] py-1 px-3 rounded-[1rem] active:scale-95 transition-all" href="#stats">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-[11px] font-medium mt-0.5">Stats</span>
+</a>
+<!-- Paramètres -->
+<a class="flex flex-col items-center justify-center text-[#A09DB1] hover:text-[#c6bfff] py-1 px-3 rounded-[1rem] active:scale-95 transition-all" href="#settings">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-[11px] font-medium mt-0.5">Paramètres</span>
+</a>
+</nav>
+<!-- Interactive Night Tracker Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let seconds = 892; // 14:52
+      const timerDisplay = document.getElementById('feed-timer');
+      const toggleBtn = document.getElementById('timer-toggle-btn');
+      let isRunning = true;
+      let interval = null;
+
+      function updateDisplay() {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        timerDisplay.textContent = 
+          String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+      }
+
+      function startTimer() {
+        interval = setInterval(() => {
+          seconds++;
+          updateDisplay();
+        }, 1000);
+      }
+
+      startTimer();
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          if (isRunning) {
+            clearInterval(interval);
+            toggleBtn.innerHTML = '<span class="material-symbols-outlined text-[15px]">play_arrow</span><span>Reprendre</span>';
+            toggleBtn.classList.replace('bg-[#7665FA]', 'bg-[#2b2835]');
+            toggleBtn.classList.replace('text-[#14121e]', 'text-[#F9ECE5]');
+          } else {
+            startTimer();
+            toggleBtn.innerHTML = '<span class="material-symbols-outlined text-[15px]">pause</span><span>Arrêter</span>';
+            toggleBtn.classList.replace('bg-[#2b2835]', 'bg-[#7665FA]');
+            toggleBtn.classList.replace('text-[#F9ECE5]', 'text-[#14121e]');
+          }
+          isRunning = !isRunning;
+        });
+      }
+
+      // 1-tap feedback for diaper buttons
+      const diaperButtons = document.querySelectorAll('.diaper-btn');
+      diaperButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          diaperButtons.forEach(b => b.classList.remove('ring-2', 'ring-[#7665FA]', 'bg-[#211e2b]'));
+          btn.classList.add('ring-2', 'ring-[#7665FA]', 'bg-[#211e2b]');
+        });
+      });
+    });
+  </script>
+</body></html>

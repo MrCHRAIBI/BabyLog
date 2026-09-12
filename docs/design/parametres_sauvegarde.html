@@ -1,0 +1,474 @@
+<!DOCTYPE html><html class="dark" lang="fr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>BabyLog - Paramètres &amp; Sauvegarde</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#8c7fff",
+            "on-primary-fixed-variant": "#3f24c2",
+            "primary": "#c6bfff",
+            "on-error-container": "#ffdad6",
+            "error-container": "#93000a",
+            "on-primary-fixed": "#160066",
+            "surface-container-highest": "#363340",
+            "on-surface": "#e6e0f2",
+            "background": "#14121e",
+            "on-primary": "#2800a0",
+            "on-surface-variant": "#c8c4d7",
+            "on-background": "#e6e0f2",
+            "surface-tint": "#c6bfff",
+            "outline-variant": "#474555",
+            "secondary-fixed": "#e2dfff",
+            "on-primary-container": "#23008d",
+            "surface-container-low": "#1d1a26",
+            "tertiary-container": "#a387ac",
+            "inverse-surface": "#e6e0f2",
+            "primary-fixed-dim": "#c6bfff",
+            "surface-container": "#211e2b",
+            "tertiary-fixed": "#f7d8ff",
+            "surface": "#14121e",
+            "on-tertiary": "#3e2847",
+            "surface-variant": "#363340",
+            "secondary-container": "#424184",
+            "primary-fixed": "#e4dfff",
+            "error": "#ffb4ab",
+            "inverse-on-surface": "#322f3c",
+            "on-tertiary-container": "#372140",
+            "tertiary-fixed-dim": "#dbbce4",
+            "on-tertiary-fixed": "#281331",
+            "on-secondary-fixed-variant": "#403f82",
+            "surface-container-lowest": "#0f0c18",
+            "surface-dim": "#14121e",
+            "outline": "#928ea0",
+            "on-error": "#690005",
+            "tertiary": "#dbbce4",
+            "secondary": "#c2c1ff",
+            "on-tertiary-fixed-variant": "#563e5f",
+            "on-secondary-fixed": "#130f55",
+            "surface-container-high": "#2b2835",
+            "secondary-fixed-dim": "#c2c1ff",
+            "on-secondary-container": "#b2b1fd",
+            "surface-bright": "#3b3745",
+            "on-secondary": "#29276a",
+            "inverse-primary": "#5844da",
+            "brand-accent": "#7665FA",
+            "warm-cream": "#F9ECE5",
+            "soft-muted": "#A0A0B2"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "1rem",
+            "xl": "1rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "margin-tablet": "2rem",
+            "gutter-desktop": "2rem",
+            "space-sm": "0.75rem",
+            "space-xs": "0.5rem",
+            "margin-desktop": "3rem",
+            "space-md": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "space-lg": "1.75rem",
+            "space-xl": "2.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "timer-display": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["36px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "timer-display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "18px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "body-sm": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Toggle Switch Custom Style */
+    .switch-checkbox:checked + .switch-label {
+      background-color: #7665FA;
+    }
+    .switch-checkbox:checked + .switch-label .switch-thumb {
+      transform: translateX(20px);
+    }
+    
+    /* Ambient Glow & Night Vision Preservation */
+    .ambient-card-glow {
+      box-shadow: 0 10px 30px -10px rgba(118, 101, 250, 0.12);
+    }
+    .ambient-btn-glow {
+      box-shadow: 0 4px 20px rgba(118, 101, 250, 0.35);
+    }
+    
+    /* Disable aggressive highlights on tap */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-brand-accent selection:text-warm-cream min-h-screen font-body-md text-body-md flex flex-col">
+<!-- TOP APP BAR (Shared Components JSON Anchor) -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin py-space-sm h-14 bg-surface-container-lowest transition-colors shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-warm-cream tracking-tight leading-none">BabyLog</h1>
+<p class="font-label-md text-label-md text-soft-muted">Paramètres &amp; Sauvegarde</p>
+</div>
+</div>
+<!-- Status Badge (100% Hors-ligne / Chiffré) -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="material-symbols-outlined text-[14px]" data-icon="cloud_off">cloud_off</span>
+<span class="font-label-md text-[11px] tracking-wide text-soft-muted font-medium">100% Hors-ligne</span>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CANVAS -->
+<main class="flex-1 w-full max-w-xl mx-auto px-margin pt-20 pb-28 space-y-4">
+<!-- 1. CARTE PROFIL BÉBÉ -->
+<section class="bg-surface-container-low border border-[#2d2938] rounded-2xl p-4 flex items-center justify-between ambient-card-glow hover:border-brand-accent/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<!-- Avatar avec Badge de Sécurité -->
+<div class="relative">
+<div class="w-13 h-13 rounded-full bg-gradient-to-tr from-[#322E3F] to-brand-accent/30 border border-brand-accent/30 flex items-center justify-center p-3">
+<span class="font-headline-md text-headline-md text-warm-cream font-bold leading-none">L</span>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest border border-[#2d2938] rounded-full p-1 text-primary flex items-center justify-center shadow-md" title="Chiffrement local AES-256">
+<span class="material-symbols-outlined text-[13px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<!-- Info Enfant -->
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-warm-cream font-semibold tracking-tight">Léo</h2>
+<span class="font-label-md text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-accent/15 text-primary border border-brand-accent/20">
+              AES-256
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-soft-muted">Né le 10 Septembre 2026 · <span class="text-primary font-medium">12 jours</span></p>
+</div>
+</div>
+<!-- Chevron -->
+<div class="text-soft-muted group-hover:text-warm-cream group-hover:translate-x-0.5 transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</section>
+<!-- 2. CARTE TEASER PREMIUM LIFETIME -->
+<section class="relative overflow-hidden bg-gradient-to-b from-[#251f38] to-surface-container-low border border-brand-accent/40 rounded-2xl p-4 ambient-card-glow space-y-4">
+<!-- Glow ambient decorative background -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-accent/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- En-tête Carte Premium -->
+<div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2 shrink-0"><div class="w-7 h-7 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center text-primary shrink-0"><span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span></div><h3 class="text-[16px] text-warm-cream font-bold tracking-tight">BabyLog Premium</h3></div><span class="font-label-md text-[10px] font-medium tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-[#322E3F] text-tertiary border border-tertiary-container/40 shrink-0">OFFRE UNIQUE</span></div>
+<!-- Sous-titre bienveillant -->
+<p class="font-body-sm text-body-sm text-soft-muted">
+        Sérénité nocturne complète sans abonnement ni pistage commercial.
+      </p>
+<!-- Grille 2x2 des 4 Piliers -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<div class="bg-surface-container/70 border border-[#2d2938] rounded-2xl p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="psychology">psychology</span>
+<span class="font-label-md text-[12px] text-warm-cream font-medium">SweetSpot™ IA Locale</span>
+</div>
+<div class="bg-surface-container/70 border border-[#2d2938] rounded-2xl p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="all_inclusive">all_inclusive</span>
+<span class="font-label-md text-[12px] text-warm-cream font-medium">Historique sans fin</span>
+</div>
+<div class="bg-surface-container/70 border border-[#2d2938] rounded-2xl p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="clinical_notes">clinical_notes</span>
+<span class="font-label-md text-[12px] text-warm-cream font-medium">Rapports pédiatre</span>
+</div>
+<div class="bg-surface-container/70 border border-[#2d2938] rounded-2xl p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-[12px] text-warm-cream font-medium">Zéro pub &amp; tracker</span>
+</div>
+</div>
+<!-- Bouton CTA Principal -->
+<button class="w-full h-12 bg-brand-accent hover:bg-brand-accent/90 text-warm-cream font-label-lg text-label-lg font-semibold rounded-2xl flex items-center justify-center gap-2 ambient-btn-glow active:scale-[0.98] transition-all cursor-pointer">
+<span class="">Passer au Lifetime — 29,99 €</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- 3. SECTION "CONFORT & ERGONOMIE NOCTURNE" -->
+<section class="space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h3 class="font-label-lg text-label-lg text-soft-muted uppercase font-bold tracking-wider text-[11px]">
+          Confort &amp; Ergonomie Nocturne
+        </h3>
+<span class="material-symbols-outlined text-soft-muted text-[16px]" data-icon="bedtime">bedtime</span>
+</div>
+<div class="bg-surface-container-low border border-[#2d2938] rounded-2xl divide-y divide-[#2d2938]/60 overflow-hidden">
+<!-- Thème d'affichage -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[19px]" data-icon="dark_mode" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Thème d'affichage</p>
+<p class="font-label-md text-label-md text-soft-muted">Sombre feutré OLED (Recommandé)</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-soft-muted group-hover:text-warm-cream">
+<span class="font-label-md text-primary font-semibold text-[13px]">OLED</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Langue de l'application -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[19px]" data-icon="translate">translate</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Langue de l'application</p>
+<p class="font-label-md text-label-md text-soft-muted">Vocabulaire pédiatrique français</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-soft-muted group-hover:text-warm-cream">
+<span class="font-label-md text-warm-cream font-semibold text-[13px]">Français</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Retour haptique nocturne (Switch) -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[19px]" data-icon="vibration">vibration</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Retour haptique nocturne</p>
+<p class="font-label-md text-label-md text-soft-muted">Micro-vibrations feutrées à 1 main</p>
+</div>
+</div>
+<!-- Toggle Interactif -->
+<label class="relative inline-flex items-center cursor-pointer select-none">
+<input checked="" class="sr-only switch-checkbox" id="toggle-haptic" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full transition-colors duration-200 ease-in-out switch-label">
+<div class="w-4 h-4 bg-warm-cream rounded-full absolute top-1 left-1 transition-transform duration-200 ease-in-out switch-thumb shadow-sm"></div>
+</div>
+</label>
+</div>
+<!-- Rappel sauvegarde mensuelle (Switch) -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[19px]" data-icon="notification_important">notification_important</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-body-md text-body-md text-warm-cream font-medium">Rappel sauvegarde</p>
+<span class="font-label-md text-[10px] px-1.5 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-bold">30j</span>
+</div>
+<p class="font-label-md text-label-md text-soft-muted">Alerte discrète pour préserver vos nuits</p>
+</div>
+</div>
+<!-- Toggle Interactif -->
+<label class="relative inline-flex items-center cursor-pointer select-none">
+<input checked="" class="sr-only switch-checkbox" id="toggle-backup" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full transition-colors duration-200 ease-in-out switch-label">
+<div class="w-4 h-4 bg-warm-cream rounded-full absolute top-1 left-1 transition-transform duration-200 ease-in-out switch-thumb shadow-sm"></div>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- 4. SECTION "CHIFFREMENT & DONNÉES" -->
+<section class="space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h3 class="font-label-lg text-label-lg text-soft-muted uppercase font-bold tracking-wider text-[11px]">
+          Chiffrement &amp; Données
+        </h3>
+<span class="font-label-md text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-300 border border-emerald-800/40">
+          Hors-ligne strict
+        </span>
+</div>
+<div class="bg-surface-container-low border border-[#2d2938] rounded-2xl divide-y divide-[#2d2938]/60 overflow-hidden">
+<!-- Exporter backup -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[19px]" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Exporter un backup (.babylog)</p>
+<p class="font-label-md text-label-md text-soft-muted">Sauvegarde chiffrée AES-256 avec code PIN</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Importer backup -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[19px]" data-icon="file_download">file_download</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Importer un backup</p>
+<p class="font-label-md text-label-md text-soft-muted">Restaurer depuis un fichier .babylog</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Exporter données brutes JSON -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[19px]" data-icon="data_object">data_object</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Exporter les données brutes (JSON)</p>
+<p class="font-label-md text-label-md text-soft-muted">Données SQLite locales exportables sans verrou</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- 5. SECTION "ASSISTANCE & MENTIONS" -->
+<section class="space-y-2">
+<div class="px-1">
+<h3 class="font-label-lg text-label-lg text-soft-muted uppercase font-bold tracking-wider text-[11px]">
+          Assistance &amp; Transparence
+        </h3>
+</div>
+<div class="bg-surface-container-low border border-[#2d2938] rounded-2xl divide-y divide-[#2d2938]/60 overflow-hidden">
+<!-- Restaurer les achats -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[19px]" data-icon="restore">restore</span>
+</div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Restaurer les achats</p>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Disclaimer médical -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[19px]" data-icon="local_hospital">local_hospital</span>
+</div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Disclaimer médical &amp; mentions pédiatriques</p>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+<!-- Licences open source -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-2xl bg-surface-container border border-[#2d2938] flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[19px]" data-icon="code">code</span>
+</div>
+<p class="font-body-md text-body-md text-warm-cream font-medium">Licences open-source &amp; code source</p>
+</div>
+<span class="material-symbols-outlined text-soft-muted group-hover:text-warm-cream transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- 6. FOOTER DE RÉASSURANCE -->
+<footer class="pt-4 pb-2 text-center space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container/60 border border-[#2d2938]">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-label-md text-[11px] text-soft-muted font-medium">BabyLog Offline v1.0.0 • Chiffrement SQLite local actif</span>
+</div>
+<p class="font-body-sm text-[12px] text-soft-muted/70 flex items-center justify-center gap-1">
+<span class="">Conçu avec bienveillance pour les veilles nocturnes</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</p>
+</footer>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Components JSON Anchor) -->
+<!-- Logic: The 4th destination 'Paramètres' is ACTIVE -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex items-center justify-around px-margin py-space-xs h-16 bg-surface-raised dark:bg-surface-raised shadow-lg bg-[#181622]/95 backdrop-blur-md">
+<!-- Onglet 1: Journal (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-secondary text-soft-muted hover:text-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out cursor-pointer group">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors" data-icon="history">history</span>
+<span class="font-label-md text-[11px] mt-0.5">Journal</span>
+</button>
+<!-- Onglet 2: Tracker (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-secondary text-soft-muted hover:text-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out cursor-pointer group">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors" data-icon="play_circle">play_circle</span>
+<span class="font-label-md text-[11px] mt-0.5">Tracker</span>
+</button>
+<!-- Onglet 3: Stats (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-secondary text-soft-muted hover:text-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out cursor-pointer group">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-md text-[11px] mt-0.5">Stats</span>
+</button>
+<!-- Onglet 4: Paramètres (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-brand-accent font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out cursor-pointer relative">
+<div class="relative">
+<span class="material-symbols-outlined text-[22px] text-brand-accent" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<!-- Subtle Active Glow Pip -->
+<span class="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+</div>
+<span class="font-label-md text-[11px] mt-0.5 font-bold text-brand-accent">Paramètres</span>
+</button>
+</nav>
+<!-- Interactive Script for micro-haptics / toggle states -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle interaction logic
+      const toggles = document.querySelectorAll('.switch-checkbox');
+      toggles.forEach(toggle => {
+        toggle.addEventListener('change', (e) => {
+          // Play optional light haptic feedback if browser supports navigator.vibrate
+          if ('vibrate' in navigator) {
+            navigator.vibrate(15);
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body></html>

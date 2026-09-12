@@ -1,0 +1,165 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BabyLog - Onboarding Express</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Font: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#7665FA",
+            secondary: "#9C9BE5",
+            tertiary: "#C5A7CE",
+            neutral: "#282532",
+            "neutral-input": "#221f2c",
+            background: "#1B1924",
+            "text-cream": "#F9ECE5",
+            "border-subtle": "rgba(255, 255, 255, 0.08)",
+            "border-card": "rgba(255, 255, 255, 0.09)"
+          },
+          borderRadius: {
+            "card": "1rem",     /* strict 1rem (16px) */
+            "input": "1rem",    /* strict 1rem (16px) */
+            "btn": "1rem",      /* strict 1rem (16px) */
+            "pill": "1rem"      /* consistent 1rem */
+          },
+          fontFamily: {
+            body: ["Plus Jakarta Sans", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: 100dvh;
+      background-color: #1B1924;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-cream font-body antialiased flex flex-col justify-between selection:bg-primary selection:text-white">
+<!-- Background ambient glow aura -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-12 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-[110px]"></div>
+</div>
+<main class="relative z-10 w-full max-w-md mx-auto px-5 py-8 flex-1 flex flex-col justify-between gap-7">
+<!-- Header Section with generous spacing -->
+<header class="flex flex-col items-center text-center space-y-4 pt-1">
+<!-- Icon Badge: Bébé & Sommeil -->
+<div class="relative w-16 h-16 rounded-[1rem] bg-neutral flex items-center justify-center border border-border-card shadow-lg shadow-black/30">
+<div class="absolute inset-0 rounded-[1rem] bg-primary/10 blur-sm"></div>
+<span class="material-symbols-outlined text-secondary text-3xl relative z-10" style="font-variation-settings: 'FILL' 1;">child_care</span>
+</div>
+<!-- Quick Setup Pill -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[1rem] bg-neutral border border-border-card text-secondary text-xs font-medium tracking-wide">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+<span>Configuration rapide &amp; sereine</span>
+</div>
+<!-- Title & Subtitle -->
+<div class="space-y-2 px-2">
+<h1 class="text-2xl sm:text-[28px] leading-tight font-bold text-text-cream tracking-tight">Bienvenue sur BabyLog</h1>
+<p class="text-sm leading-relaxed text-tertiary max-w-xs mx-auto">
+          Configurons le journal de votre tout-petit en quelques secondes.
+        </p>
+</div>
+</header>
+<!-- Main Form Card (Neutral: #282532 with 1rem radius and clear inner hierarchy) -->
+<section class="w-full bg-neutral rounded-[1rem] p-6 border border-border-card shadow-xl shadow-black/40 space-y-6">
+<!-- Champ 1: Prénom du bébé -->
+<div class="space-y-2">
+<label class="block text-xs font-semibold uppercase tracking-wider text-tertiary" for="baby_name">
+          Prénom de bébé
+        </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-xl">face_6</span>
+</div>
+<input class="w-full bg-neutral-input border border-border-subtle text-text-cream placeholder:text-tertiary/60 text-base font-medium rounded-[1rem] pl-11 pr-4 py-3.5 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all" id="baby_name" name="baby_name" placeholder="Ex. Léo, Maya, Gabriel..." type="text" value="Léo">
+</div>
+<p class="flex items-center gap-1.5 text-xs text-tertiary/80 pl-1 pt-1">
+<span class="material-symbols-outlined text-xs text-secondary">lock</span>
+<span>Chiffré localement sur votre appareil (AES-256)</span>
+</p>
+</div>
+<!-- Champ 2: Date de naissance -->
+<div class="space-y-2">
+<label class="block text-xs font-semibold uppercase tracking-wider text-tertiary" for="birth_date">
+          Date de naissance
+        </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-xl">event</span>
+</div>
+<input class="w-full bg-neutral-input border border-border-subtle text-text-cream text-base font-medium rounded-[1rem] pl-11 pr-11 py-3.5 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all cursor-pointer" id="birth_date" type="text" value="10 Septembre 2026">
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+</div>
+</div>
+</div>
+<!-- Champs optionnels: Heure & Poids en grille avec gouttière généreuse -->
+<div class="grid grid-cols-2 gap-4 pt-1">
+<div class="space-y-2">
+<label class="block text-xs font-medium text-tertiary" for="birth_time">
+            Heure (optionnel)
+          </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-base">schedule</span>
+</div>
+<input class="w-full bg-neutral-input border border-border-subtle text-text-cream placeholder:text-tertiary/50 text-sm font-medium rounded-[1rem] pl-10 pr-3 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all" id="birth_time" placeholder="04:25" type="text">
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-medium text-tertiary" for="birth_weight">
+            Poids (optionnel)
+          </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-base">monitor_weight</span>
+</div>
+<input class="w-full bg-neutral-input border border-border-subtle text-text-cream placeholder:text-tertiary/50 text-sm font-medium rounded-[1rem] pl-10 pr-3 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all" id="birth_weight" placeholder="3.450 kg" type="text">
+</div>
+</div>
+</div>
+<!-- Clause médicale / Rassurance légale distincte avec marge -->
+<div class="pt-4 border-t border-border-subtle">
+<label class="flex items-start gap-3.5 cursor-pointer select-none group">
+<div class="relative flex items-center pt-0.5 shrink-0">
+<input checked="" class="sr-only peer" id="disclaimer-checkbox" type="checkbox">
+<div class="w-5 h-5 rounded-[6px] border border-border-subtle bg-neutral-input peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-white text-sm font-bold opacity-0 peer-checked:opacity-100 transition-opacity">check</span>
+</div>
+</div>
+<span class="text-xs text-text-cream/80 leading-relaxed group-hover:text-text-cream transition-colors">
+            Je comprends que BabyLog est un journal de suivi parental, pas un dispositif médical et ne remplace pas un diagnostic pédiatrique.
+          </span>
+</label>
+</div>
+</section>
+<!-- Confidentialité & Sécurité Offline Box -->
+<aside class="flex items-center justify-center gap-2.5 px-4 py-3 rounded-[1rem] bg-neutral border border-border-card text-center">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-xs font-medium text-text-cream/90">100% Hors-ligne · Zéro compte · Données privées</span>
+</aside>
+<!-- Footer Actions (Bouton Primary #7665FA et mentions) -->
+<footer class="space-y-3 pb-1 pt-1">
+<button class="w-full h-14 bg-primary text-text-cream font-semibold text-base rounded-[1rem] flex items-center justify-center gap-2.5 shadow-lg shadow-primary/30 hover:opacity-95 active:scale-[0.99] transition-all group" type="button">
+<span>Commencer le suivi</span>
+<span class="material-symbols-outlined text-xl transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-sm text-secondary">timer</span>
+<span class="text-xs">Prêt en moins de 45 secondes</span>
+</div>
+</footer>
+</main>
+</body></html>

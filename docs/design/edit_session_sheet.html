@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Édition de Session (EditSessionSheet) — BabyLog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#3f24c2",
+            "on-error-container": "#ffdad6",
+            "background": "#14121e",
+            "surface-container": "#211e2b",
+            "tertiary-fixed": "#f7d8ff",
+            "on-tertiary-fixed-variant": "#563e5f",
+            "error": "#ffb4ab",
+            "tertiary-fixed-dim": "#dbbce4",
+            "on-secondary": "#29276a",
+            "surface-container-highest": "#363340",
+            "primary": "#c6bfff",
+            "secondary": "#c2c1ff",
+            "secondary-fixed-dim": "#c2c1ff",
+            "inverse-on-surface": "#322f3c",
+            "outline": "#928ea0",
+            "on-background": "#e6e0f2",
+            "surface-variant": "#363340",
+            "surface-tint": "#c6bfff",
+            "secondary-fixed": "#e2dfff",
+            "on-surface-variant": "#c8c4d7",
+            "on-primary-container": "#23008d",
+            "on-secondary-fixed-variant": "#403f82",
+            "primary-container": "#8c7fff",
+            "outline-variant": "#474555",
+            "on-secondary-fixed": "#130f55",
+            "error-container": "#93000a",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#c6bfff",
+            "on-primary-fixed": "#160066",
+            "on-surface": "#e6e0f2",
+            "inverse-primary": "#5844da",
+            "on-tertiary-container": "#372140",
+            "on-primary": "#2800a0",
+            "primary-fixed": "#e4dfff",
+            "surface-container-lowest": "#0f0c18",
+            "on-tertiary": "#3e2847",
+            "surface-container-high": "#2b2835",
+            "on-tertiary-fixed": "#281331",
+            "surface-bright": "#3b3745",
+            "inverse-surface": "#e6e0f2",
+            "secondary-container": "#424184",
+            "surface-container-low": "#1d1a26",
+            "surface": "#14121e",
+            "tertiary": "#dbbce4",
+            "on-secondary-container": "#b2b1fd",
+            "tertiary-container": "#a387ac",
+            "surface-dim": "#14121e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "1rem",
+            "xl": "1rem",
+            "full": "1rem"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xl": "2.5rem",
+            "margin-tablet": "2rem",
+            "gutter-desktop": "2rem",
+            "space-xs": "0.5rem",
+            "space-md": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "gutter": "1rem",
+            "space-lg": "1.75rem",
+            "space-sm": "0.75rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "timer-display": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "timer-display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "18px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-lg": ["36px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Absolute uniform roundness of 1rem across all elements */
+    *, ::before, ::after {
+      border-radius: 1rem !important;
+    }
+    html, body {
+      border-radius: 0 !important;
+      background-color: #14121e;
+      color: #e6e0f2;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+    }
+    .icon-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    .ambient-glow {
+      box-shadow: 0 12px 32px -8px rgba(118, 101, 250, 0.16);
+    }
+    .active-halo {
+      box-shadow: 0 0 24px rgba(118, 101, 250, 0.25);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col justify-end items-center relative overflow-x-hidden antialiased select-none">
+<!-- Arrière-plan feutré contextuel (tableau de bord nocturne en retrait sous le voile) -->
+<div class="fixed inset-0 z-0 opacity-40 pointer-events-none p-margin flex flex-col gap-space-md max-w-xl mx-auto w-full">
+<!-- Header factice en arrière-plan -->
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="child_care">child_care</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">BabyLog</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-high border border-outline-variant/30 text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="cloud_off">cloud_off</span>
+<span class="font-label-md text-label-md">Local</span>
+</div>
+</div>
+<!-- Carte résumé factice -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Fenêtre d'éveil recommandée</span>
+<div class="font-timer-display text-timer-display text-primary">01:45</div>
+<span class="font-body-sm text-body-sm text-secondary">Dernier endormissement vers 01:30</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="p-space-sm bg-surface-container-highest text-primary">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Tétée de nuit</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">03:15 • Sein gauche</div>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-secondary">17 min</span>
+</div>
+</div>
+<!-- Fond assombri semi-transparent (Backdrop OLED ultra doux) -->
+<div class="fixed inset-0 z-10 bg-surface-container-lowest/80 backdrop-blur-sm transition-opacity duration-300"></div>
+<!-- Bottom Sheet : Édition de Session (EditSessionSheet) V2 -->
+<main aria-labelledby="sheet-title" aria-modal="true" class="relative z-20 w-full max-w-xl bg-surface-container-low border border-outline-variant/40 ambient-glow flex flex-col max-h-[813px] mb-0 overflow-hidden" role="dialog">
+<!-- 1. Drag Handle & En-tête -->
+<div class="flex flex-col items-center pt-space-sm px-margin pb-space-xs border-b border-outline-variant/20">
+<!-- Barre de préhension (strictement 1rem) -->
+<div class="w-12 h-1.5 bg-outline-variant/60 mb-space-sm"></div>
+<div class="w-full flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container-high border border-outline-variant/40 text-primary">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold" id="sheet-title">Modifier l'activité</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Session de nuit enregistrée</p>
+</div>
+</div>
+<!-- Bouton Fermer (bloc d'icône avec border-radius 1rem) -->
+<button aria-label="Fermer la modal" class="w-11 h-11 flex items-center justify-center bg-surface-container-high border border-outline-variant/40 text-on-surface hover:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Conteneur défilable pour écran tactile -->
+<div class="overflow-y-auto px-margin py-space-md flex flex-col gap-space-md">
+<!-- 2. Sélecteur de type d'activité (SegmentedControl à 3 options arrondies à 1rem) -->
+<section aria-label="Type d'activité" class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider px-1">Type d'événement</span>
+<div class="grid grid-cols-3 gap-space-xs bg-surface-container-high p-1.5 border border-outline-variant/30">
+<!-- Option 1: Tétée (Active) -->
+<button class="flex flex-col items-center justify-center py-space-sm px-space-xs bg-primary-container/30 border border-primary text-on-surface active-halo transition-all" type="button">
+<span class="material-symbols-outlined text-primary icon-fill mb-1" data-icon="water_bottle">water_bottle</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Tétée</span>
+</button>
+<!-- Option 2: Sommeil -->
+<button class="flex flex-col items-center justify-center py-space-sm px-space-xs bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/40 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface-variant mb-1" data-icon="bedtime">bedtime</span>
+<span class="font-label-lg text-label-lg">Sommeil</span>
+</button>
+<!-- Option 3: Couche -->
+<button class="flex flex-col items-center justify-center py-space-sm px-space-xs bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/40 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface-variant mb-1" data-icon="humidity_mid">humidity_mid</span>
+<span class="font-label-lg text-label-lg">Couche</span>
+</button>
+</div>
+</section>
+<!-- 3. Carte Horaires & Durée (arrondie à 1rem) -->
+<section class="bg-surface-container-high border border-outline-variant/40 p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container text-secondary border border-outline-variant/40">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Horaires et Durée</span>
+</div>
+<!-- Calcul automatique de la durée -->
+<div class="px-space-sm py-1 bg-secondary-container/40 border border-secondary/30 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-secondary-fixed font-semibold">Durée calculée : 17 min</span>
+</div>
+</div>
+<!-- Grille des sélecteurs début / fin -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Heure Début -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Heure de début</label>
+<div class="flex items-center justify-between px-space-sm py-space-sm bg-surface-container-low border border-outline-variant/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 flex items-center justify-center bg-surface-container-highest text-primary">
+<span class="material-symbols-outlined text-base" data-icon="play_arrow">play_arrow</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-on-surface">Aujourd'hui, 03:15</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<!-- Heure Fin -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Heure de fin</label>
+<div class="flex items-center justify-between px-space-sm py-space-sm bg-surface-container-low border border-outline-variant/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 flex items-center justify-center bg-surface-container-highest text-secondary">
+<span class="material-symbols-outlined text-base" data-icon="stop">stop</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-on-surface">Aujourd'hui, 03:32</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Détails spécifiques conditionnels à la tétée (arrondie à 1rem) -->
+<section class="bg-surface-container-high border border-outline-variant/40 p-space-md flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container text-primary border border-outline-variant/40">
+<span class="material-symbols-outlined text-sm" data-icon="nutrition">nutrition</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Détails de la tétée</span>
+</div>
+<!-- Choix du sein : deux boutons/segments 'Sein gauche' (actif) et 'Sein droit' -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-md text-label-md text-on-surface-variant">Côté allaitement</span>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Sein Gauche (Actif) -->
+<button class="h-12 flex items-center justify-center gap-2 bg-primary-container/30 border border-primary text-primary font-label-lg text-label-lg active-halo transition-all" type="button">
+<span class="material-symbols-outlined text-base" data-icon="check_circle">check_circle</span>
+<span>Sein gauche</span>
+</button>
+<!-- Sein Droit -->
+<button class="h-12 flex items-center justify-center gap-2 bg-surface-container-low border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/40 active:scale-95 transition-all font-label-lg text-label-lg" type="button">
+<span class="material-symbols-outlined text-base text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<span>Sein droit</span>
+</button>
+</div>
+</div>
+<!-- Quantité complémentaire ou biberon (optionnel) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between" for="bottle-qty">
+<span>Quantité complémentaire / biberon</span>
+<span class="text-outline text-xs">Optionnel</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low border border-outline-variant/50 px-space-md text-on-surface placeholder:text-outline font-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary pr-14" id="bottle-qty" placeholder="ex: 60" type="number"/>
+<div class="absolute right-3 px-2.5 py-1 bg-surface-container text-secondary font-label-md text-label-md border border-outline-variant/40 pointer-events-none">
+              ml
+            </div>
+</div>
+</div>
+</section>
+<!-- 5. Zone de notes personnelles (arrondie à 1rem) -->
+<section class="bg-surface-container-high border border-outline-variant/40 p-space-md flex flex-col gap-space-xs">
+<label class="flex items-center gap-space-xs" for="session-notes">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container text-secondary border border-outline-variant/40">
+<span class="material-symbols-outlined text-sm" data-icon="notes">notes</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Notes &amp; Observations</span>
+</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant/50 p-space-sm text-on-surface placeholder:text-outline/70 font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none mt-1" id="session-notes" placeholder="Note (ex: bébé calme, bonne prise au sein...)" rows="3">Bébé très calme, s'est rendormi immédiatement après le rot.</textarea>
+</section>
+</div>
+<!-- 6. Actions en pied de page -->
+<div class="p-margin bg-surface-container-high/90 border-t border-outline-variant/20 flex flex-col gap-space-sm backdrop-blur-sm">
+<!-- Bouton Principal CTA haut de 56px (strictement 1rem) -->
+<button class="w-full h-14 bg-primary text-on-primary-container font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.98] transition-all active-halo shadow-lg" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="check">check</span>
+<span>Enregistrer les modifications</span>
+</button>
+<!-- Bouton d'action destructif secondaire (strictement 1rem) -->
+<button class="w-full h-12 bg-error-container/20 border border-error-container/40 text-error font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-error-container/30 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+<span>Supprimer cette session</span>
+</button>
+</div>
+</main>
+</body></html>

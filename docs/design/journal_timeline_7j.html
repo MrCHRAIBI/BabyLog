@@ -1,0 +1,397 @@
+<!DOCTYPE html><html class="dark" lang="fr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Journal (Timeline 7j) (V2) — BabyLog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#23008d",
+            "primary-fixed": "#e4dfff",
+            "on-tertiary-container": "#372140",
+            "surface-tint": "#c6bfff",
+            "secondary-fixed-dim": "#c2c1ff",
+            "tertiary-fixed": "#f7d8ff",
+            "tertiary-container": "#a387ac",
+            "on-secondary": "#29276a",
+            "tertiary-fixed-dim": "#dbbce4",
+            "on-primary": "#2800a0",
+            "primary-container": "#8c7fff",
+            "on-error-container": "#ffdad6",
+            "error": "#ffb4ab",
+            "secondary": "#c2c1ff",
+            "on-primary-fixed-variant": "#3f24c2",
+            "on-background": "#e6e0f2",
+            "on-secondary-container": "#b2b1fd",
+            "error-container": "#93000a",
+            "inverse-surface": "#e6e0f2",
+            "primary-fixed-dim": "#c6bfff",
+            "surface": "#14121e",
+            "on-tertiary-fixed": "#281331",
+            "surface-container-high": "#2b2835",
+            "on-surface": "#e6e0f2",
+            "on-surface-variant": "#c8c4d7",
+            "tertiary": "#dbbce4",
+            "secondary-fixed": "#e2dfff",
+            "on-secondary-fixed": "#130f55",
+            "surface-container": "#211e2b",
+            "secondary-container": "#424184",
+            "surface-dim": "#14121e",
+            "primary": "#c6bfff",
+            "outline-variant": "#474555",
+            "surface-container-low": "#1d1a26",
+            "outline": "#928ea0",
+            "inverse-on-surface": "#322f3c",
+            "surface-variant": "#363340",
+            "surface-bright": "#3b3745",
+            "on-secondary-fixed-variant": "#403f82",
+            "inverse-primary": "#5844da",
+            "on-tertiary-fixed-variant": "#563e5f",
+            "on-tertiary": "#3e2847",
+            "background": "#14121e",
+            "surface-container-lowest": "#0f0c18",
+            "surface-container-highest": "#363340",
+            "on-error": "#690005",
+            "on-primary-fixed": "#160066",
+            /* App palette overrides */
+            "brand-primary": "#7665FA",
+            "brand-secondary": "#9C9BE5",
+            "brand-tertiary": "#C5A7CE",
+            "brand-card": "#282532",
+            "brand-bg": "#1B1924",
+            "brand-text-high": "#F9ECE5",
+            "brand-elevated": "#322E3F"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-sm": "0.75rem",
+            "gutter": "1rem",
+            "gutter-desktop": "2rem",
+            "space-xl": "2.5rem",
+            "space-md": "1.25rem",
+            "margin": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.75rem",
+            "space-xs": "0.5rem",
+            "margin-tablet": "2rem"
+          },
+          fontFamily: {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "timer-display": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "headline-lg": ["36px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+            "body-sm": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+            "timer-display": ["48px", { lineHeight: "56px", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["12px", { lineHeight: "18px", letterSpacing: "0.03em", fontWeight: "500" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "body-md": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .material-symbols-outlined[data-weight="fill"],
+    .icon-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Ambient Glow */
+    .glow-active {
+      box-shadow: 0 0 24px rgba(118, 101, 250, 0.22);
+    }
+    .glow-card {
+      box-shadow: 0 12px 32px -8px rgba(118, 101, 250, 0.12);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-on-surface antialiased min-h-screen pb-24 font-body-md text-body-md select-none">
+<!-- TOP APP BAR (from Shared Components JSON: TopAppBar) -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin py-space-sm h-14 bg-surface-container-lowest border-b border-[rgba(249,236,229,0.06)] shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-[#282532] border border-[rgba(249,236,229,0.08)] flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="child_care">child_care</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-brand-text-high tracking-tight text-lg leading-none">BabyLog</span>
+</div>
+<!-- Security Badge & Trailing Actions -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-2xl bg-[#282532] border border-[rgba(249,236,229,0.08)] text-brand-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+<span class="font-medium tracking-wide">100% Local · AES-256</span>
+</div>
+<button aria-label="Offline Mode Active" class="flex items-center justify-center w-8 h-8 rounded-2xl bg-[#282532] text-brand-secondary hover:bg-[#322E3F] transition-colors" title="100% Local Cache">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud_off">cloud_off</span>
+</button>
+</div>
+</header>
+<!-- MAIN CANVAS CONTAINER -->
+<main class="max-w-[720px] mx-auto pt-16 px-4 space-y-5">
+<!-- PAGE HEADER BLOCK -->
+<section class="mt-3 flex items-center justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md text-brand-text-high font-bold tracking-tight">Journal de bord</h1>
+</div>
+<p class="text-xs font-semibold tracking-wider text-brand-tertiary uppercase">HISTORIQUE 7 JOURS</p>
+</div>
+<!-- Export PDF Button -->
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-[#282532] hover:bg-[#322E3F] border border-[rgba(197,167,206,0.25)] text-brand-text-high text-xs font-semibold transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-brand-secondary" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="">Exporter PDF</span>
+</button>
+</section>
+<!-- FILTER CHIPS (All with 1rem / rounded-2xl) -->
+<section aria-label="Filtres du journal" class="flex items-center gap-2 w-full pb-1 overflow-x-auto scrollbar-none"><button class="flex flex-1 items-center justify-center gap-1 px-2 py-2 rounded-2xl bg-brand-primary text-brand-text-high font-semibold text-xs transition-all shadow-md active:scale-95"><span class="material-symbols-outlined text-[15px]" data-icon="all_inclusive">all_inclusive</span><span class="">Tout</span><span class="ml-0.5 px-1.5 py-0.5 rounded-full bg-white/20 text-[10px] leading-none">42</span></button><button class="flex flex-1 items-center justify-center gap-1 px-2 py-2 rounded-2xl bg-[#282532] hover:bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary font-medium text-xs transition-all active:scale-95"><span class="material-symbols-outlined text-[15px] text-brand-secondary" data-icon="water_drop">water_drop</span><span class="text-brand-text-high">Tétées</span><span class="ml-0.5 px-1.5 py-0.5 rounded-full bg-[#322E3F] text-brand-tertiary text-[10px] leading-none">22</span></button><button class="flex flex-1 items-center justify-center gap-1 px-2 py-2 rounded-2xl bg-[#282532] hover:bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary font-medium text-xs transition-all active:scale-95"><span class="material-symbols-outlined text-[15px] text-brand-secondary" data-icon="bedtime">bedtime</span><span class="text-brand-text-high">Sommeil</span><span class="ml-0.5 px-1.5 py-0.5 rounded-full bg-[#322E3F] text-brand-tertiary text-[10px] leading-none">12</span></button></section>
+<!-- ONGOING SESSION CARD (ACTIVE TIMER) -->
+<section class="rounded-2xl bg-[#322E3F] border border-[rgba(118,101,250,0.4)] p-4 glow-active space-y-3 relative overflow-hidden">
+<!-- Ambient decorative gradient bar -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-tertiary"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-primary"></span>
+</span>
+<span class="text-[11px] font-bold tracking-wider text-brand-secondary uppercase">EN COURS · SEIN GAUCHE</span>
+</div>
+<div class="px-2.5 py-0.5 rounded-2xl bg-[#282532] border border-[rgba(156,155,229,0.25)] text-brand-secondary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="sync">sync</span>
+          Auto-save
+        </div>
+</div>
+<div class="flex items-center justify-between gap-4 pt-1"><div class="flex flex-col"><span class="font-timer-display text-timer-display text-brand-text-high tracking-tight leading-none">18:04</span><span class="text-xs text-brand-tertiary font-medium tracking-wide mt-1">min écoulées</span></div><button class="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-brand-primary hover:bg-[#6855f7] text-brand-text-high font-semibold text-sm transition-all active:scale-95 shadow-md shrink-0"><span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span><span class="">Terminer</span></button></div>
+</section>
+<!-- DAY SECTION 1: AUJOURD'HUI — 10 SEPTEMBRE -->
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold tracking-wider text-brand-secondary uppercase flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+          AUJOURD'HUI — 10 SEPTEMBRE
+        </h2>
+<span class="text-xs font-medium text-brand-tertiary">3 entrées</span>
+</div>
+<div class="space-y-3">
+<!-- Entry 1: Tétée sein gauche -->
+<article class="rounded-2xl bg-brand-card border border-[rgba(249,236,229,0.06)] p-4 flex items-start gap-3.5 hover:border-[rgba(118,101,250,0.3)] transition-all">
+<div class="w-10 h-10 rounded-2xl bg-[#322E3F] border border-[rgba(118,101,250,0.3)] flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="water_drop">water_drop</span>
+</div>
+<div class="flex-1 space-y-1.5 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-[16px] leading-snug font-semibold text-brand-text-high truncate">Tétée sein gauche</h3>
+<span class="text-xs font-medium text-brand-tertiary shrink-0">14h30 - 14h44</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-brand-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                Durée: 14 min
+              </span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="px-2 py-0.5 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+                Bébé calme
+              </span>
+</div>
+</div>
+</article>
+<!-- Entry 2: Couche mouillée -->
+<article class="rounded-2xl bg-brand-card border border-[rgba(249,236,229,0.06)] p-4 flex items-start gap-3.5 hover:border-[rgba(197,167,206,0.3)] transition-all">
+<div class="w-10 h-10 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.3)] flex items-center justify-center text-brand-tertiary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="cleaning_services">cleaning_services</span>
+</div>
+<div class="flex-1 space-y-1.5 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-[16px] leading-snug font-semibold text-brand-text-high truncate">Couche mouillée</h3>
+<span class="text-xs font-medium text-brand-tertiary shrink-0">13h15</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-brand-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="opacity">opacity</span>
+                Urine claire
+              </span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="px-2 py-0.5 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified">verified</span>
+                RAS
+              </span>
+</div>
+</div>
+</article>
+<!-- Entry 3: Sieste après-midi -->
+<article class="rounded-2xl bg-brand-card border border-[rgba(249,236,229,0.06)] p-4 flex items-start gap-3.5 hover:border-[rgba(156,155,229,0.3)] transition-all">
+<div class="w-10 h-10 rounded-2xl bg-[#322E3F] border border-[rgba(156,155,229,0.3)] flex items-center justify-center text-brand-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="bedtime">bedtime</span>
+</div>
+<div class="flex-1 space-y-1.5 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-[16px] leading-snug font-semibold text-brand-text-high truncate">Sieste après-midi</h3>
+<span class="text-xs font-medium text-brand-tertiary shrink-0">11h00 - 12h45</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-brand-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                Durée: 1h45
+              </span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="text-brand-tertiary">Lit parapluie</span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="px-2 py-0.5 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="spa">spa</span>
+                Endormissement facile
+              </span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- DAY SECTION 2: HIER — 9 SEPTEMBRE -->
+<section class="space-y-3 pt-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold tracking-wider text-brand-secondary uppercase flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="history">history</span>
+          HIER — 9 SEPTEMBRE
+        </h2>
+<span class="text-xs font-medium text-brand-tertiary">2 entrées</span>
+</div>
+<div class="space-y-3">
+<!-- Entry 1: Nuit complète -->
+<article class="rounded-2xl bg-brand-card border border-[rgba(249,236,229,0.06)] p-4 flex items-start gap-3.5 hover:border-[rgba(156,155,229,0.3)] transition-all">
+<div class="w-10 h-10 rounded-2xl bg-[#322E3F] border border-[rgba(156,155,229,0.3)] flex items-center justify-center text-brand-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="nights_stay">nights_stay</span>
+</div>
+<div class="flex-1 space-y-1.5 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-[16px] leading-snug font-semibold text-brand-text-high truncate">Nuit complète</h3>
+<span class="text-xs font-medium text-brand-tertiary shrink-0">21h30 - 06h15</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-brand-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                Durée: 8h45
+              </span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="text-brand-tertiary">1 réveil nocturne</span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="px-2 py-0.5 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="bed">bed</span>
+                Sommeil réparateur
+              </span>
+</div>
+</div>
+</article>
+<!-- Entry 2: Tétée matinale -->
+<article class="rounded-2xl bg-brand-card border border-[rgba(249,236,229,0.06)] p-4 flex items-start gap-3.5 hover:border-[rgba(118,101,250,0.3)] transition-all">
+<div class="w-10 h-10 rounded-2xl bg-[#322E3F] border border-[rgba(118,101,250,0.3)] flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="water_drop">water_drop</span>
+</div>
+<div class="flex-1 space-y-1.5 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-[16px] leading-snug font-semibold text-brand-text-high truncate">Tétée matinale</h3>
+<span class="text-xs font-medium text-brand-tertiary shrink-0">06h30 - 06h50</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-brand-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="sync_alt">sync_alt</span>
+                Deux seins · 20 min
+              </span>
+<span class="text-[rgba(249,236,229,0.3)]">•</span>
+<span class="px-2 py-0.5 rounded-2xl bg-[#322E3F] border border-[rgba(197,167,206,0.2)] text-brand-tertiary text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+                Bon appétit
+              </span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (from Shared Components JSON: BottomNavBar) -->
+<!-- Strict Hierarchy: Current page is 'Journal', hence tab 1 (Journal) is ACTIVE with style_active_navigation & #7665FA -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex items-center justify-around px-margin py-space-xs h-16 bg-[#282532] border-t border-[rgba(249,236,229,0.06)] shadow-lg rounded-t-2xl">
+<!-- Tab 1: Journal (ACTIVE - mapped directly to page intent) -->
+<a class="flex flex-col items-center justify-center text-brand-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#journal">
+<span class="material-symbols-outlined text-[22px] icon-fill text-brand-primary" data-icon="history">history</span>
+<span class="text-[11px] font-semibold mt-0.5 text-brand-primary">Journal</span>
+</a>
+<!-- Tab 2: Tracker -->
+<a class="flex flex-col items-center justify-center text-brand-tertiary hover:text-brand-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#tracker">
+<span class="material-symbols-outlined text-[22px]" data-icon="play_circle">play_circle</span>
+<span class="text-[11px] font-medium mt-0.5">Tracker</span>
+</a>
+<!-- Tab 3: Stats -->
+<a class="flex flex-col items-center justify-center text-brand-tertiary hover:text-brand-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#stats">
+<span class="material-symbols-outlined text-[22px]" data-icon="bar_chart">bar_chart</span>
+<span class="text-[11px] font-medium mt-0.5">Stats</span>
+</a>
+<!-- Tab 4: Paramètres -->
+<a class="flex flex-col items-center justify-center text-brand-tertiary hover:text-brand-primary font-caption text-caption py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#parametres">
+<span class="material-symbols-outlined text-[22px]" data-icon="settings">settings</span>
+<span class="text-[11px] font-medium mt-0.5">Paramètres</span>
+</a>
+</nav>
+<script>
+    // Lightweight interactive helper for active timer counting
+    document.addEventListener('DOMContentLoaded', () => {
+      let seconds = 25;
+      let minutes = 14;
+      const display = document.querySelector('.font-timer-display');
+      
+      if (display) {
+        setInterval(() => {
+          seconds++;
+          if (seconds >= 60) {
+            minutes++;
+            seconds = 0;
+          }
+          const formattedMinutes = String(minutes).padStart(2, '0');
+          const formattedSeconds = String(seconds).padStart(2, '0');
+          display.textContent = `${formattedMinutes}:${formattedSeconds}`;
+        }, 1000);
+      }
+    });
+  </script>
+
+
+</body></html>
