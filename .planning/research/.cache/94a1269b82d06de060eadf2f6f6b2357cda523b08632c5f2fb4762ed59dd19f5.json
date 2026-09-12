@@ -1,0 +1,1 @@
+{"content":"zustand 5.0.15 latest (React 19 compatible, useSyncExternalStore based). persist middleware with createJSONStorage(() => mmkvStorage) custom adapter is the standard MMKV integration; partialize supported.","source":"web","provider":"websearch","confidence":"HIGH","fetched_at":"2026-09-12T21:14:59.199Z","ttl":86400000,"kind":"web"}
