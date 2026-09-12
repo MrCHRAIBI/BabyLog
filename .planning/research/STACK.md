@@ -23,7 +23,7 @@ The repo is already scaffolded on a coherent SDK 57 baseline (expo ~57.0.22, RN 
 | 6 | AdMob plugin props `userTrackingPermission: false`, `childDirectedTreatment: false`, `maxAdContentRating: "G"` | v16.5.0 plugin props (read from shipped `.d.ts`): `androidAppId`, `iosAppId`, `delayAppMeasurementInit`, `optimizeInitialization`, `optimizeAdLoading`, `skAdNetworkItems`, `userTrackingUsageDescription` (string). No `userTrackingPermission` boolean, no `childDirectedTreatment`, no `maxAdContentRating`. | Omit `userTrackingUsageDescription` entirely (no ATT prompt = no IDFA tracking). Set `childDirectedTreatment`/`maxAdContentRating` at runtime via `setRequestConfig({ maxAdContentRating: 'G', childDirectedTreatment: false })` in `core/ads`. **HIGH** |
 | 7 | `expo-print` "orientation" option | `printToFileAsync` has NO `orientation` option (orientation only exists on iOS `printAsync`). Portrait is default; landscape is done via CSS `@page { size: landscape }`. | Use `printToFileAsync({ html })` + CSS `@page`. Pediatric PDF is portrait anyway. **HIGH** |
 | 8 | babel: reanimated plugin in babel.config.js | On SDK 57, Reanimated 4.5.1 + `react-native-worklets 0.10.1` are configured **automatically by babel-preset-expo**. Never add `react-native-reanimated/plugin` (wrong location, double-registration errors). | Only `["babel-preset-expo", { jsxImportSource: "nativewind" }]` + `"nativewind/babel"`. **HIGH** |
-| 9 | "expo-iap inexistant/immature" (rejected alternative) | expo-iap 5.6.0 exists and is active (sibling project in hyochan's OpenIAP monorepo, same core as react-native-iap). react-native-iap itself is NOT deprecated — "actively maintained — development simply moved home" to OpenIAP; npm package name unchanged. | Spec decision stands (react-native-iap 16.6.0). Noted for due diligence only. **HIGH** |
+| 9 | "expo-iap inexistant/immature" (rejected alternative) | expo-iap 5.6.0 exists and is active (sibling project in hyochan's OpenIAP monorepo, same core as react-native-iap). react-native-iap itself is NOT deprecated — "actively maintained — development simply moved home" to OpenIAP; npm package name unchanged. | Superseded by user decision 2026-09-12: expo-iap 5.6.0. **HIGH** |
 
 ---
 
@@ -59,7 +59,7 @@ The repo is already scaffolded on a coherent SDK 57 baseline (expo ~57.0.22, RN 
 | @hookform/resolvers | 5.9.1 | `zodResolver` for RHF+Zod | Latest; zod v4 supported. **HIGH** |
 | expo-crypto | ~57.0.3 | `randomUUID()` for all IDs; random salt for PBKDF2 | SDK version map. Also the source of randomness — do NOT use `crypto-js.random` for salts. **HIGH** |
 | expo-secure-store | ~57.0.4 | Master key in Keychain/Keystore (`WHEN_UNLOCKED_THIS_DEVICE_ONLY`) | SDK version map. Caveat: iOS per-value limit 2048 bytes — a 32-byte master key fits trivially. **HIGH** |
-| crypto-js | 4.2.0 | AES-256 + PBKDF2 (100k iters) — pure JS, per spec mandate | Last publish 4.2.0; upstream README states "Active development of CryptoJS has been discontinued." Frozen but stable and battle-tested; acceptable per the explicit quick-crypto ban. Mitigation: generate all randomness via `expo-crypto`, keep the crypto wrapper (`core/utils/crypto.ts`) single-file so it can be swapped in V2. **HIGH (version) / accepted-risk (maintenance)** |
+| @noble/hashes + @noble/ciphers | dernières stables | PBKDF2/SHA-256 + AES-256-GCM AEAD pur JS maintenu | Remplace crypto-js discontinué (décision 2026-09-12), respecte l'interdit zéro-natif |
 | dayjs | 1.11.23 | Dates, epoch ms, timezone display | Latest; ~2 kB; chainable; `utc`/`duration`/`timezone` plugins. **HIGH** |
 | i18next | 26.4.2 | i18n core (en, fr, es, it, ja) | Latest major. **HIGH** |
 | react-i18next | 17.0.13 | React bindings | Peers: react >= 16.8, i18next >= 26.2, TS ^5\|\|^6\|\|^7 — all satisfied. **HIGH** |
@@ -70,7 +70,7 @@ The repo is already scaffolded on a coherent SDK 57 baseline (expo ~57.0.22, RN 
 | expo-file-system | ~57.0.7 | Write PDF/backup files | **New API on SDK 57**: `import { File, Directory, Paths } from 'expo-file-system'`. `new File(Paths.document, 'x.babylog').write(str)`; `file.textSync()`; legacy funcs throw from main entry (`expo-file-system/legacy` if ever needed). **HIGH** |
 | expo-sharing | ~57.0.19 | Native Share Sheet for PDF + `.babylog` backup | `Sharing.shareAsync(uri, { mimeType, UTI, dialogTitle })` unchanged on SDK 57. PDF: `mimeType: 'application/pdf'`, iOS `UTI: 'com.adobe.pdf'`. Android can also use `file.contentUri` from the new FS API. **HIGH** |
 | expo-asset | ~57.0.17 | Font/asset bundling (spec addendum v2 item 4) | SDK version map. **HIGH** |
-| react-native-iap | 16.6.0 | IAP StoreKit 2 / Play Billing (Lifetime + subs) | Latest. NOT deprecated — maintained in the OpenIAP monorepo, npm package unchanged. Nitro-based since v14, requires RN >= 0.79 + `react-native-nitro-modules` (already added for MMKV). The package itself is the Expo config plugin (`"react-native-iap"` in plugins). Expo Go unsupported → dev build required (already required by MMKV). Init deferred until after onboarding per zero-network-at-boot. **HIGH (version/status) / MEDIUM (API details at implementation time — v14+ API renamed several methods, verify signatures when building `core/billing`)** |
+| expo-iap | 5.6.0 | IAP StoreKit 2 / Play Billing | Cœur OpenIAP officiel Expo, plugin withIAP, Expo Dev Client supporté (le README react-native-iap v16 y renvoie les projets Expo) |
 | react-native-google-mobile-ads | 16.5.0 | AdMob Native/Banner/Rewarded + Google UMP consent | Latest. Officially supports Old AND New Architecture (iOS fully migrated; Android runs most formats through the interop layer — works, expect occasional New-Arch interop quirks; Banner/Native/Rewarded are the widely-used paths). UMP is built in: `import { AdsConsent } from 'react-native-google-mobile-ads'` → `AdsConsent.gatherConsent()`, `getConsentInfo().canRequestAds`, `AdsConsentStatus.OBTAINED`. Defer `mobileAds().initialize()` until after onboarding AND set `delayAppMeasurementInit: true` so nothing phones home at boot. **HIGH (version) / MEDIUM (New-Arch Android interop)** |
 
 ### Development Tools
@@ -100,15 +100,14 @@ npx expo install expo-sqlite expo-crypto expo-secure-store expo-notifications \
 npx expo install react-native-mmkv react-native-nitro-modules
 
 # IAP + Ads
-npx expo install react-native-iap react-native-google-mobile-ads
+npx expo install expo-iap react-native-google-mobile-ads
 
 # Styling (NativeWind 4 = Tailwind v3 line — do NOT install tailwindcss 4)
 npx expo install nativewind react-native-reanimated react-native-safe-area-context
 npm install -D tailwindcss@~3.4.19 prettier prettier-plugin-tailwindcss eslint-config-expo@~57.0.2
 
 # State / forms / validation / dates / i18n / crypto
-npm install zustand zod react-hook-form @hookform/resolvers dayjs i18next react-i18next crypto-js
-npm install -D @types/crypto-js
+npm install zustand zod react-hook-form @hookform/resolvers dayjs i18next react-i18next @noble/hashes @noble/ciphers
 
 # Testing
 npm install -D vitest @vitest/coverage-v8 better-sqlite3 @types/better-sqlite3 eslint-config-prettier
@@ -204,7 +203,7 @@ module.exports = {
         "optimizeAdLoading": true
         // NO userTrackingUsageDescription → no ATT prompt, no IDFA (privacy spec)
       }],
-      "react-native-iap",
+      "expo-iap",
       ["expo-build-properties", { "android": { "minSdkVersion": 33 } }],
       ["expo-file-system", { "enableFileSharing": true, "supportsOpeningDocumentsInPlace": true }]
     ]
@@ -315,8 +314,8 @@ db.execSync("PRAGMA foreign_keys = ON;");
 |-------------|-------------|-------------------------|
 | NativeWind 4.2.6 + Tailwind 3.4.x | NativeWind 5.0.0-preview.4 (Tailwind v4 engine) | Only if v5 reaches stable AND the project wants Tailwind v4 plugins. Not before launch. |
 | react-native-mmkv 4.3.2 | expo-secure-store as general KV / AsyncStorage | Never for this project (spec bans AsyncStorage; secure-store is 2KB-limited secrets storage). |
-| react-native-iap 16.6.0 | expo-iap 5.6.0 | If react-native-iap ever abandons the npm line — expo-iap shares the same OpenIAP core, migration is contained inside `core/billing/iapService.ts`. |
-| crypto-js 4.2.0 | react-native-quick-crypto | **Forbidden by spec** (C++ JSI binding). If PBKDF2 100k proves too slow on mid-range devices, spec addendum authorizes 50k iters before any library change. |
+| expo-iap 5.6.0 | react-native-iap 16.6.0 | If react-native-iap ever abandons the npm line — expo-iap shares the same OpenIAP core, migration is contained inside `core/billing/iapService.ts`. |
+| @noble/hashes + @noble/ciphers | react-native-quick-crypto | **Forbidden by spec** (C++ JSI binding). If PBKDF2 100k proves too slow on mid-range devices, spec addendum authorizes 50k iters before any library change. |
 | Vitest 5 | jest-expo ~57.0.5 | If component/hook testing becomes a requirement (Expo-official RN test runner). |
 | FlatList | @shopify/flash-list 2.0.2 | V1.1 if unlimited history > 200 items (per docs/04 — correct call; flash-list 2.0.2 is in the SDK 57 map when needed). |
 

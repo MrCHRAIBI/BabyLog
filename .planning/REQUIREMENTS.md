@@ -21,7 +21,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **TRACK-02**: User can consigner une couche en 1 tap sans timer via chips (Mouillée/Sale/Mixte/Propre) — enregistrée immédiatement
 - [ ] **TRACK-03**: Le timer en cours survit au crash/kill de l'app (état MMKV `timer:` avec startedAt, reprise du temps écoulé à la réouverture)
 - [ ] **TRACK-04**: User can changer le côté d'allaitement (gauche/droite) pendant une tétée en cours
-- [ ] **TRACK-05**: User can éditer, ajuster les horaires ou supprimer une session passée (EditSessionSheet : type, début, fin, détails, notes ≤ 200 caractères)
+- [ ] **TRACK-05**: User can éditer, ajuster les horaires ou supprimer une session passée (EditSessionSheet : type, début, fin, détails, notes ≤ 500 caractères)
 - [ ] **TRACK-06**: User sees la Timeline des 7 derniers jours groupée par jour (tri `started_at DESC`), avec cumuls quotidiens (nb tétées/couches, heures de sommeil) et filtres par type
 - [ ] **TRACK-07**: Chaque bouton de tracking affiche « Dernière [tétée/sieste/couche] il y a X »
 - [ ] **TRACK-08**: Le schéma m001 inclut l'enum modalité de tétée (nurse/bottle/pump) — UI de saisie pompage en V1.1
@@ -141,13 +141,68 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (à remplir par le roadmapper) | | |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| NIGHT-01 | Phase 1 | Pending |
+| NIGHT-04 | Phase 1 | Pending |
+| INFRA-01 | Phase 2 | Pending |
+| INFRA-03 | Phase 2 | Pending |
+| INFRA-06 | Phase 2 | Pending |
+| TRACK-08 | Phase 2 | Pending |
+| SETUP-01 | Phase 3 | Pending |
+| SETUP-02 | Phase 3 | Pending |
+| SETUP-03 | Phase 3 | Pending |
+| SETUP-04 | Phase 3 | Pending |
+| SETUP-05 | Phase 3 | Pending |
+| TRACK-01 | Phase 4 | Pending |
+| TRACK-02 | Phase 4 | Pending |
+| TRACK-03 | Phase 4 | Pending |
+| TRACK-04 | Phase 4 | Pending |
+| TRACK-05 | Phase 4 | Pending |
+| TRACK-06 | Phase 4 | Pending |
+| TRACK-07 | Phase 4 | Pending |
+| TRACK-09 | Phase 4 | Pending |
+| NIGHT-02 | Phase 4 | Pending |
+| NIGHT-03 | Phase 4 | Pending |
+| PRED-01 | Phase 5 | Pending |
+| PRED-02 | Phase 5 | Pending |
+| PRED-03 | Phase 5 | Pending |
+| PDF-01 | Phase 5 | Pending |
+| PDF-02 | Phase 5 | Pending |
+| PDF-03 | Phase 5 | Pending |
+| PDF-04 | Phase 5 | Pending |
+| BACKUP-01 | Phase 6 | Pending |
+| BACKUP-02 | Phase 6 | Pending |
+| BACKUP-03 | Phase 6 | Pending |
+| BACKUP-04 | Phase 6 | Pending |
+| BACKUP-05 | Phase 6 | Pending |
+| BACKUP-06 | Phase 6 | Pending |
+| MONET-01 | Phase 7 | Pending |
+| MONET-02 | Phase 7 | Pending |
+| MONET-03 | Phase 7 | Pending |
+| MONET-04 | Phase 7 | Pending |
+| MONET-05 | Phase 7 | Pending |
+| MONET-06 | Phase 7 | Pending |
+| ADS-01 | Phase 7 | Pending |
+| ADS-02 | Phase 7 | Pending |
+| ADS-03 | Phase 7 | Pending |
+| ADS-04 | Phase 7 | Pending |
+| ADS-05 | Phase 7 | Pending |
+| LOGS-01 | Phase 7 | Pending |
+| LOGS-02 | Phase 7 | Pending |
+| LOGS-03 | Phase 7 | Pending |
+| SET-01 | Phase 7 | Pending |
+| SET-02 | Phase 7 | Pending |
+| SET-03 | Phase 7 | Pending |
 
 **Coverage:**
-- v1 requirements: 45 total
-- Mapped to phases: 0
-- Unmapped: 45 ⚠️
+- v1 requirements: 54 total
+- Mapped to phases: 54
+- Unmapped: 0 ✓
+
+*Note: an earlier revision stated 45 v1 requirements; the actual count is 54 (5 SETUP + 9 TRACK + 4 NIGHT + 3 PRED + 4 PDF + 6 BACKUP + 6 MONET + 5 ADS + 3 LOGS + 3 SET + 6 INFRA).*
 
 ---
 *Requirements defined: 2026-09-12*
-*Last updated: 2026-09-12 after initial definition*
+*Last updated: 2026-09-12 after roadmap creation (traceability filled, 54/54 mapped)*

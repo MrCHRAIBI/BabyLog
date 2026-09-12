@@ -28,8 +28,8 @@ Un parent doit pouvoir enregistrer une tétée/sieste/couche en ≤ 2 taps à 3h
 - [ ] UI « Nuit » OLED Nocturne Glow (dark-only, aucun blanc pur, haptique natif)
 - [ ] Export PDF pédiatre local (expo-print, 1 export glissant / 7 j en free, disclaimer inclus)
 - [ ] Prédiction SweetSpot locale (moyennes mobiles EMA, < 1 ms, gatée premium avec teaser free après 3 jours)
-- [ ] Backup local chiffré `.babylog` AES-256 (crypto-js + PBKDF2, export/import transactionnel, gratuit — jamais paywallé)
-- [ ] Monétisation : IAP react-native-iap (entitlements MMKV chiffrés, restore offline) + AdMob (init différée post-onboarding, consentement UMP EEA/UK)
+- [ ] Backup local chiffré `.babylog` AES-256 (@noble/hashes PBKDF2 + @noble/ciphers AEAD 256-bit, export/import transactionnel, gratuit — jamais paywallé)
+- [ ] Monétisation : IAP expo-iap 5.x (entitlements MMKV chiffrés, restore offline) + AdMob (init différée post-onboarding, consentement UMP EEA/UK)
 - [ ] Analytics local (event log SQLite exportable, zéro envoi) + error log local sans PII
 - [ ] Notifications locales uniquement (rappel backup J30, permission demandée à l'activation)
 - [ ] i18n (en, fr, es, it, ja) via i18next + expo-localization
