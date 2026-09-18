@@ -1,0 +1,1 @@
+{"content":"zod 4.6.5 stable (npm latest); @hookform/resolvers 5.9.1 peer zod ^3.25.0 || ^4.0.0 and react-hook-form ^7.55.0; react-hook-form 7.88.0. Use zodResolver from @hookform/resolvers/zod with Zod 4.","source":"web","provider":"webfetch","confidence":"LOW","fetched_at":"2026-09-18T18:52:30.640Z","ttl":86400000,"kind":"docs"}

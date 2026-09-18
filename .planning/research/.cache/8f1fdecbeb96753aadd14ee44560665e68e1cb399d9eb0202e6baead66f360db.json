@@ -1,0 +1,1 @@
+{"content":"zustand 5.0.15 (npm latest): persist middleware + createJSONStorage with a custom MMKV StateStorage adapter (getItem/setItem synchronous MMKV API) is the documented pattern; partialize for selective persistence of settings/entitlements stores.","source":"web","provider":"webfetch","confidence":"LOW","fetched_at":"2026-09-18T18:52:32.640Z","ttl":86400000,"kind":"docs"}
