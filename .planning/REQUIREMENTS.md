@@ -119,13 +119,57 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (to be filled by roadmap) | | |
+| TRACK-01 | Phase 2 | Pending |
+| TRACK-02 | Phase 2 | Pending |
+| TRACK-03 | Phase 2 | Pending |
+| TRACK-04 | Phase 2 | Pending |
+| TRACK-05 | Phase 2 | Pending |
+| TRACK-06 | Phase 2 | Pending |
+| TRACK-07 | Phase 2 | Pending |
+| TRACK-08 | Phase 2 | Pending |
+| TRACK-09 | Phase 2 | Pending |
+| VIEW-01 | Phase 2 | Pending |
+| VIEW-02 | Phase 2 | Pending |
+| VIEW-03 | Phase 2 | Pending |
+| EDIT-01 | Phase 2 | Pending |
+| EDIT-02 | Phase 2 | Pending |
+| EDIT-03 | Phase 2 | Pending |
+| EDIT-04 | Phase 2 | Pending |
+| PROF-01 | Phase 2 | Pending |
+| PROF-02 | Phase 2 | Pending |
+| PROF-03 | Phase 4 | Pending |
+| NIGHT-01 | Phase 3 | Pending |
+| NIGHT-02 | Phase 3 | Pending |
+| NIGHT-03 | Phase 3 | Pending |
+| EXPT-01 | Phase 6 | Pending |
+| EXPT-02 | Phase 6 | Pending |
+| EXPT-03 | Phase 6 | Pending |
+| EXPT-04 | Phase 6 | Pending |
+| BKUP-01 | Phase 6 | Pending |
+| BKUP-02 | Phase 6 | Pending |
+| BKUP-03 | Phase 6 | Pending |
+| BKUP-04 | Phase 6 | Pending |
+| PAY-01 | Phase 4 | Pending |
+| PAY-02 | Phase 4 | Pending |
+| PAY-03 | Phase 4 | Pending |
+| PAY-04 | Phase 5 | Pending |
+| PAY-05 | Phase 4 | Pending |
+| PAY-06 | Phase 4 | Pending |
+| LOC-01 | Phase 3 | Pending |
+| LOC-02 | Phase 2 | Pending |
+| COMP-01 | Phase 7 | Pending |
+| COMP-02 | Phase 7 | Pending |
+| COMP-03 | Phase 7 | Pending |
+| COMP-04 | Phase 7 | Pending |
+| OPS-01 | Phase 7 | Pending |
+| OPS-02 | Phase 1 | Pending |
+| OPS-03 | Phase 7 | Pending |
 
 **Coverage:**
-- v1 requirements: 46 total
-- Mapped to phases: 0
-- Unmapped: 46 ⚠️
+- v1 requirements: 45 total (the original header stated 46; enumerating all listed IDs yields 45 — all are mapped)
+- Mapped to phases: 45
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-09-18*
-*Last updated: 2026-09-18 after initial definition*
+*Last updated: 2026-09-18 after roadmap creation (traceability filled)*
