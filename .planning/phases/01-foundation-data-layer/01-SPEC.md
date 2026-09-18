@@ -14,7 +14,7 @@ Le codebase est un scaffold `create-expo-app` pur (Expo 57 + expo-router) : aucu
 
 ## Requirements
 
-1. **Dev build natif** : `eas.json` avec profil development ; l'app compile et se lance sur device physique Android ET iOS avec tous les modules natifs (expo-sqlite, react-native-mmkv, react-native-quick-crypto) chargés — pas Expo Go.
+1. **Dev build natif** : `eas.json` avec profil development ; l'app compile et se lance sur device physique Android ET iOS avec tous les modules natifs (expo-sqlite, react-native-mmkv, react-native-quick-crypto, expo-iap) chargés — pas Expo Go.
    - Current: aucun `eas.json`, aucun module natif métier installé
    - Target: dev build EAS fonctionnel sur les deux plateformes, modules natifs initialisés au boot
    - Acceptance: `eas build --profile development` produit un build installable par plateforme ; l'app se lance sur un device physique Android et un iPhone sans erreur de module natif
@@ -114,10 +114,11 @@ Le codebase est un scaffold `create-expo-app` pur (Expo 57 + expo-router) : aucu
 - [ ] `#8893FE` uniquement dans le fichier tokens ; tailwindcss 3.4.x épinglé ; NativeWind actif à la compilation
 - [ ] Après purge : lancement sans erreur, plus aucun fichier démo du template
 - [ ] Audit dépendances : aucun SDK cloud/analytics/crash — le test échoue sur une fixture knowingly-bad (fail-first prouvé)
+- [ ] Le harness Vitest inclut les cas boundary Zod (note_text 2000 accepté / 2001 rejeté ; amount_ml 5000 / 5001) et un round-trip UTF-8/emoji dans le JSON FR et dans note_text (AC #15)
 
 ## Edge Coverage
 
-**Coverage:** 8/18 applicable edges resolved · 0 unresolved
+**Coverage:** 10/20 applicable edges resolved · 0 unresolved
 
 | Category | Requirement | Status | Resolution / Reason |
 |----------|-------------|--------|---------------------|
@@ -139,10 +140,12 @@ Le codebase est un scaffold `create-expo-app` pur (Expo 57 + expo-router) : aucu
 | unclassified | R8 | ⛔ dismissed | Constante statique — tout token est défini par construction |
 | unclassified | R9 | ⛔ dismissed | Couvert par l'AC lancement-sans-erreur après purge |
 | concurrency | R10 | ⛔ dismissed | Audit statique de dépendances — pas d'exécution |
+| boundary | R3 | ✅ covered | Caps Zod aux limites : note_text 2000 caractères acceptés / 2001 rejetés, amount_ml 5000 accepté / 5001 rejeté (AC #15) — verification: explicit |
+| encoding | R7 | ✅ covered | Round-trip UTF-8/emoji dans le JSON FR rendu par i18n et dans note_text SQLite (AC #15) — verification: explicit |
 
 ## Prohibitions (must-NOT)
 
-**Coverage:** 4/4 applicable prohibitions resolved · 0 unresolved
+**Coverage:** 5/5 applicable prohibitions resolved · 0 unresolved
 
 | Prohibition (must-NOT statement) | Requirement | Status | Verification / Reason |
 |----------------------------------|-------------|--------|------------------------|
@@ -150,6 +153,7 @@ Le codebase est un scaffold `create-expo-app` pur (Expo 57 + expo-router) : aucu
 | MUST NOT contenir de SQL destructif (DROP/DELETE de données, ALTER drop) dans toute migration publiée — m001+ additive/idempotente | R2 | resolved | verification: test — `tests/migrations-non-destructive.test.ts` scanne le dossier migrations ; violation fixture avec DROP TABLE, clean fixture m001 |
 | MUST NOT stocker entitlements/état d'achat hors de l'instance MMKV chiffrée (jamais instance standard, jamais SQLite, jamais plaintext) | R4 | resolved | verification: test — `tests/entitlements-encrypted-instance.test.ts` prouve le wiring sur l'instance chiffrée ; violation fixture store branché instance standard, clean fixture wiring chiffré |
 | MUST NOT journaliser de donnée personnelle (prénom bébé, contenu de note) dans error_log ou event | R6 | resolved | verification: judgment — revue sémantique requise (non mécaniquement checkable) ; docs/05 §11 l'interdit déjà |
+| MUST NOT contenir de statement SQL (SELECT/INSERT/UPDATE/DELETE/CREATE) hors du module repositories, et MUST NOT utiliser OFFSET dans toute requête de pagination | R3 | resolved | verification: test — tests/sql-isolation.test.ts scanne src/ hors repositories pour mots-clés SQL + toute occurrence OFFSET ; violation fixture avec SQL dans un hook, clean fixture repositories-only |
 
 Breadcrumbs canon : injection SQL → owned par /gsd:secure-phase + revue (pas minté ici) ; hardening build/debug → Phase 7.
 
