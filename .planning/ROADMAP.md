@@ -70,7 +70,7 @@ BabyLog ships as a strictly ordered vertical MVP: first a corrected, production-
 **Success Criteria** (what must be TRUE):
   1. On first launch a 72-hour trial starts automatically with full Premium access — no account, no sign-in, no network.
   2. When the trial ends the app degrades gracefully: history older than 24h is hidden but intact, adding a second baby profile triggers the premium gate, and 7/14-day export is locked — nothing is ever deleted.
-  3. Flipping the entitlement from Free to Premium (simulated source; real purchase verified in Phase 5) instantly reveals the entire hidden history with zero migration — the Free 24h limit is applied as a sinceMs parameter chosen by the hook/entitlement layer and passed to the repository indexed query (idx_log_event_timeline, doc 05 hot query 3) — no unindexed mass SQL, no JS post-filtering, no gate SQL outside repositories; flipping the entitlement to Premium drops the parameter and reveals the full history with zero migration.
+  3. Flipping the entitlement from Free to Premium (simulated source; real purchase verified in Phase 5) instantly reveals the entire hidden history with zero migration — the Free 24h limit is applied as a sinceMs parameter chosen by the hook/entitlement layer and passed to the repository indexed query (idx_log_event_timeline, doc 05 hot query 3) — no unindexed mass SQL, no JS post-filtering, no gate SQL outside repositories.
   4. Trial and entitlement state live only in encrypted MMKV / SecureStore (never SQLite); the OS-secure flag takes precedence over MMKV; clock rollback or reinstall cannot extend the trial beyond the 6-state precedence rules (automated conformance suite started: feature × tier × offline grace).
 **Plans**: TBD
 **UI hint**: yes
