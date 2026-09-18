@@ -443,21 +443,21 @@ iOS device flow: `npx eas-cli device:create` (QR/URL → UDID) → build → ins
 | A5 | `react-native-quick-base64` current ^3 resolves cleanly alongside nitro 0.37.1 | Standard Stack | Install-time peer warning → pin exact version |
 | A6 | In-app read-back of `isExcludedFromBackup` resource values is acceptable evidence for AC #8's "inspection container" intent (full container pull needs libimobiledevice/Xcode) | Open Questions | AC interpreted strictly → need libimobiledevice Windows install or borrowed-Mac session |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **iOS container-inspection mechanics from Windows**
-   - What we know: AC #8 requires verifying on a real device that DB/MMKV files are absent from the iCloud backup set. Xcode container download is unavailable (no macOS). libimobiledevice is not installed (checked).
-   - What's unclear: whether in-app read-back of the `isExcludedFromBackupKey` resource value (the exact flag backupd consults) satisfies the AC's intent, or whether a full USB backup via `idevicebackup2` (libimobiledevice Windows build) must be inspected.
-   - Recommendation: plan the in-app read-back as primary evidence (it queries the same OS flag), plus an optional libimobiledevice install step as a `checkpoint:human-verify` if strict interpretation wins. Decide in planning, not at execution.
+All three questions were decided during planning (revision 2026-09-18). The decisions below are binding for execution; this section no longer carries open items.
 
-2. **MMKV instance `path` for the encrypted instance — Application Support vs Documents**
-   - What we know: default is `$(Documents)/mmkv/` (README). A custom `path` gives deterministic targets for the exclusion sweep.
-   - What's unclear: whether any MMKV-internal expectation about path stability across updates conflicts with a custom path (unlikely).
-   - Recommendation: set an explicit `path` for both instances (e.g. under the app's Library/Application Support) and document it; the sweep enumerates whatever directory the instance reports.
+1. **iOS container-inspection mechanics from Windows — RESOLVED: in-app read-back is the accepted evidence (A6 adopted).**
+   - Decision: the sweep exports a read-back function; the device proof for AC #8 is `isExcludedFromBackup=true` read in-app for babylog.db, -wal, -shm and all MMKV files (the exact flag backupd consults).
+   - Deciding plan sections: implemented by 01-06 Task 3 (read-back exported from src/core/backupGuard), proven on device by 01-07 Task 3 (dev-entry/__DEV__ trigger).
+   - Residual: a full USB container pull (libimobiledevice/`idevicebackup2`) stays OUT of Phase 1 scope; if a strict interpretation is ever required, replan it as a separate item — never blocking this phase.
 
-3. **Node 26 vs SDK 57 baseline Node 22 (A4)**
-   - What we know: better-sqlite3 + expo-sqlite probed fine on Node 26.3.0 here; openiap lists Node 22.13.x for SDK 57.
-   - Recommendation: proceed on Node 26 with `nvm use 22` as the documented fallback; revisit only if metro/eas-cli misbehaves.
+2. **MMKV instance `path` — RESOLVED: explicit path for BOTH instances under Application Support.**
+   - Decision: standard instance and encrypted instance both get an explicit `path` under the app's Application Support directory (resolved via the NEW expo-file-system `Paths` API); the sweep enumerates whatever directory each instance reports (A2).
+   - Deciding plan section: 01-05 Task 1 (mmkv.ts creates both instances with explicit path; paths exposed for the sweep consumed by 01-06 Task 3).
+
+3. **Node 26 vs SDK 57 baseline Node 22 — RESOLVED: proceed on Node 26.3.0, fallback documented.**
+   - Decision: no plan task required (environment constraint, not code). If metro/eas-cli misbehaves, `nvm use 22` (openiap SDK 57 baseline) is the documented recovery path (see Environment Availability below and A4).
 
 ## Environment Availability
 

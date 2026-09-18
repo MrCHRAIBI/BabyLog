@@ -32,15 +32,16 @@ BabyLog ships as a strictly ordered vertical MVP: first a corrected, production-
   4. A changed setting survives app kill and relaunch via the Zustand + MMKV persistence path (standard instance for settings/trial; encrypted instance with key in SecureStore for entitlements).
   5. The app boots with i18next initialized from static EN/FR JSON with EN fallback and no network fetch at startup.
   6. The iOS build excludes babylog.db and MMKV files from iCloud backup (isExcludedFromBackup=true via config plugin), verified by container inspection on a real device.
-**Plans:** 6 plans
+**Plans:** 7 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Corrected stack install (D-024), scaffold purge, design tokens source unique, wiring NativeWind + eas.json (D-001-ctx)
-- [ ] 01-02-PLAN.md — Wave 0 : harness Vitest better-sqlite3 + audits fail-first + client SQLite + runner + m001 amendée + schémas Zod feuilles (D-042)
-- [ ] 01-03-PLAN.md — Six repositories SQL-exclusifs (docs/05 §8) + suite de tests harness (listes vides, keyset ties, rollback)
-- [ ] 01-04-PLAN.md — MMKV v4 dual-instance + SecureStore fail-hard + Zustand persist + seed D-007 + boot i18n EN/FR
-- [ ] 01-05-PLAN.md — Logger + ErrorBoundary D-005/D-006 + exclusions backup OS (plugin Android OPS-02, module natif iOS + sweep)
-- [ ] 01-06-PLAN.md — Walking skeleton : boot chain + écran profil réel + ACs device Android 14 et iPhone 12 (D-002/D-003-ctx)
+- [ ] 01-01-PLAN.md — Corrected stack install (D-024), scaffold purge + src/services/.gitkeep, design tokens source unique, wiring NativeWind + eas.json (D-001-ctx)
+- [ ] 01-02-PLAN.md — Wave 0 : harness Vitest better-sqlite3 + trois audits fail-first (isolation SQL, migrations non destructives, zéro cloud) + fixtures
+- [ ] 01-03-PLAN.md — DB spine : client SQLite + PRAGMAs + runner + m001 amendée + schémas Zod feuilles (D-042) + tests de caps
+- [ ] 01-04-PLAN.md — Six repositories SQL-exclusifs (docs/05 §8) + suite de tests harness (listes vides, keyset ties, rollback)
+- [ ] 01-05-PLAN.md — MMKV v4 dual-instance + SecureStore fail-hard + Zustand persist + seed D-007 + boot i18n EN/FR
+- [ ] 01-06-PLAN.md — Logger + ErrorBoundary D-005/D-006 + exclusions backup OS (plugin Android OPS-02, module natif iOS + sweep)
+- [ ] 01-07-PLAN.md — Walking skeleton : boot chain + écran profil réel + ACs device Android 14 et iPhone 12 (D-002/D-003-ctx)
 
 **UI hint**: no
 
