@@ -64,7 +64,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **PAY-02**: À la fin du trial, downgrade gracieux vers Free : historique > 24 h caché (jamais supprimé), 1 profil, export 7/14 j verrouillé
 - [ ] **PAY-03**: L'historique caché redevient intégralement visible immédiatement après achat ou restore purchases — zéro migration
 - [ ] **PAY-04**: Le paywall propose $39.99/an et $99.99 lifetime via IAP natifs (StoreKit 2 / Play Billing), avec restore purchases fonctionnel sur les deux stores
-- [ ] **PAY-05**: La limite Free 24 h est appliquée par paramètre de requête (since) au niveau entitlements/hooks — pas de filtrage applicatif massif, aucun SQL de gate
+- [ ] **PAY-05**: La limite Free 24 h est appliquée par paramètre de requête (since) au niveau entitlements/hooks — pas de filtrage applicatif massif, aucun SQL de gate hors repositories (le paramètre since est passé à la requête indexée du repository, doc 05 requête chaude 3)
 - [ ] **PAY-06**: Entitlements et état de trial vivent en MMKV chiffrée / SecureStore — jamais en SQLite ; le flag OS sécurisé prime sur MMKV
 
 ### Localisation & Unités

@@ -31,6 +31,7 @@ BabyLog ships as a strictly ordered vertical MVP: first a corrected, production-
   3. The built Android artifact carries allowBackup=false and dataExtractionRules so the database and MMKV stores are excluded from OS cloud auto-backup (verified in the merged manifest).
   4. A changed setting survives app kill and relaunch via the Zustand + MMKV persistence path (standard instance for settings/trial; encrypted instance with key in SecureStore for entitlements).
   5. The app boots with i18next initialized from static EN/FR JSON with EN fallback and no network fetch at startup.
+  6. The iOS build excludes babylog.db and MMKV files from iCloud backup (isExcludedFromBackup=true via config plugin), verified by container inspection on a real device.
 **Plans**: TBD
 **UI hint**: no
 
@@ -69,7 +70,7 @@ BabyLog ships as a strictly ordered vertical MVP: first a corrected, production-
 **Success Criteria** (what must be TRUE):
   1. On first launch a 72-hour trial starts automatically with full Premium access — no account, no sign-in, no network.
   2. When the trial ends the app degrades gracefully: history older than 24h is hidden but intact, adding a second baby profile triggers the premium gate, and 7/14-day export is locked — nothing is ever deleted.
-  3. Flipping the entitlement from Free to Premium (simulated source; real purchase verified in Phase 5) instantly reveals the entire hidden history with zero migration — the Free 24h limit is applied as a sinceMs query parameter at the hook layer, never as SQL filtering or JS post-filtering.
+  3. Flipping the entitlement from Free to Premium (simulated source; real purchase verified in Phase 5) instantly reveals the entire hidden history with zero migration — the Free 24h limit is applied as a sinceMs parameter chosen by the hook/entitlement layer and passed to the repository indexed query (idx_log_event_timeline, doc 05 hot query 3) — no unindexed mass SQL, no JS post-filtering, no gate SQL outside repositories; flipping the entitlement to Premium drops the parameter and reveals the full history with zero migration.
   4. Trial and entitlement state live only in encrypted MMKV / SecureStore (never SQLite); the OS-secure flag takes precedence over MMKV; clock rollback or reinstall cannot extend the trial beyond the 6-state precedence rules (automated conformance suite started: feature × tier × offline grace).
 **Plans**: TBD
 **UI hint**: yes

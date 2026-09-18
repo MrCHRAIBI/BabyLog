@@ -65,11 +65,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Pre-Phase 1] docs/04 deviations need explicit sign-off: crypto-js → quick-crypto and react-native-iap → expo-iap (sets the Phase 1 install list and Nitro pinning)
-- [Pre-Phase 1] iOS iCloud backup stance undecided: accept default inclusion of DB/MMKV (soften marketing copy) vs write a config plugin to exclude — blocks Phase 1 config and marketing wording
-- [Pre-Phase 1] Android minSdk 33 confirmation (cuts Android 12-and-below reach) — product decision
-- [Pre-Phase 5] Play account type: personal (12-tester × 14-day gate) vs organization (D-U-N-S, days-to-weeks to obtain) — sets the launch critical path
-- [Pre-Phase 6] PBKDF2 iterations (docs 210k vs OWASP 600k) and the <2s backup budget — benchmark on a real low-end device before writing the encryption service
+Resolved 2026-09-18 — decisions D-024 to D-028 recorded in PROJECT.md Key Decisions and docs addenda
 
 ## Deferred Items
 

@@ -83,6 +83,11 @@ Un parent peut enregistrer un événement (tétée, sommeil, couche, note) en 1 
 | Tétée = boutons Sein G / Sein D / Biberon + timer ; couche/note = log instantané | Le geste 1-tap à 3h du matin doit être inférieur à 1 seconde | — Pending |
 | iOS + Android dès le lancement | Marché plus large ; double surface de test IAP acceptée | — Pending |
 | EN + FR au lancement | Couvre France/Suisse/Canada partiellement ; localisation complète plus tard | — Pending |
+| D-024 : déviations stack approuvées — react-native-quick-crypto remplace crypto-js (discontinué) ; expo-iap remplace react-native-iap (archivé, même cœur OpenIAP, module Expo) | crypto-js est officiellement discontinué et son PBKDF2 en JS gèle le thread ; react-native-iap est archivé avec un pin Nitro fragile | — Pending |
+| D-025 : DB + MMKV exclus d'iCloud backup via config plugin (isExcludedFromBackup=true) | La promesse « ne quitte jamais l'appareil » est absolue ; mitigation de la perte de téléphone = backup chiffré gratuit (BKUP-01) | — Pending |
+| D-026 : Android minSdk 33 | Réduit la portée Android ≤ 12 mais simplifie la surface native ; décision produit assumée | — Pending |
+| D-027 : compte Google Play personnel | Gate closed testing 12×14j déjà couvert par le workstream OPS-03 ; recrutement des testeurs pendant la Phase 4 | — Pending |
+| D-028 : PBKDF2-HMAC-SHA256 600 000 itérations (plancher OWASP), sel aléatoire par fichier, paramètres stockés en en-tête du backup | Remplace les 210k de docs/04 ; benchmark low-end en Phase 6 sans jamais abaisser les itérations | — Pending |
 
 ## Evolution
 
