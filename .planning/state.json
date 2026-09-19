@@ -1,0 +1,48 @@
+{
+  "contract": "1.0.0",
+  "flavor": "core",
+  "milestone": null,
+  "phases": [
+    {
+      "number": "1",
+      "name": "Foundation & Data Layer",
+      "status": "pending"
+    },
+    {
+      "number": "2",
+      "name": "Core Tracking Slice",
+      "status": "pending"
+    },
+    {
+      "number": "3",
+      "name": "3am Experience",
+      "status": "pending"
+    },
+    {
+      "number": "4",
+      "name": "Trial, Entitlements & Free-Tier Gating",
+      "status": "pending"
+    },
+    {
+      "number": "5",
+      "name": "Billing Integration (IAP)",
+      "status": "pending"
+    },
+    {
+      "number": "6",
+      "name": "Exports & Encrypted Backup",
+      "status": "pending"
+    },
+    {
+      "number": "7",
+      "name": "Compliance, Analytics & Store Submission",
+      "status": "pending"
+    }
+  ],
+  "next": {
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step",
+    "reason": "Phase 1 of 7 · 0% · executing"
+  },
+  "updated_at": "2026-09-18T23:21:20.438Z"
+}
